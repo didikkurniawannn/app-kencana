@@ -1,0 +1,178 @@
+<?php
+
+namespace Database\Seeders\Exported;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class KegiatansSeeder extends Seeder
+{
+    public function run(): void
+    {
+        DB::table('kegiatans')->truncate();
+        DB::table('kegiatans')->insert([
+            [
+                'id' => 37,
+                'kode_kegiatan' => '7.01.01.2.01',
+                'nama_kegiatan' => 'Perencanaan, Penganggaran, dan Evaluasi Kinerja Perangkat Daerah',
+                'program_id' => 17,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 38,
+                'kode_kegiatan' => '7.01.01.2.02',
+                'nama_kegiatan' => 'Administrasi Keuangan Perangkat Daerah',
+                'program_id' => 17,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 39,
+                'kode_kegiatan' => '7.01.01.2.03',
+                'nama_kegiatan' => 'Administrasi Barang Milik Daerah pada Perangkat Daerah',
+                'program_id' => 17,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 40,
+                'kode_kegiatan' => '7.01.01.2.05',
+                'nama_kegiatan' => 'Administrasi Kepegawaian Perangkat Daerah',
+                'program_id' => 17,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 41,
+                'kode_kegiatan' => '7.01.01.2.06',
+                'nama_kegiatan' => 'Administrasi Umum Perangkat Daerah',
+                'program_id' => 17,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 42,
+                'kode_kegiatan' => '7.01.01.2.07',
+                'nama_kegiatan' => 'Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah',
+                'program_id' => 17,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 43,
+                'kode_kegiatan' => '7.01.01.2.08',
+                'nama_kegiatan' => 'Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah',
+                'program_id' => 17,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 44,
+                'kode_kegiatan' => '7.01.01.2.09',
+                'nama_kegiatan' => 'Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah',
+                'program_id' => 17,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 45,
+                'kode_kegiatan' => '7.01.02.2.02',
+                'nama_kegiatan' => 'Penyelenggaraan Urusan Pemerintahan yang Tidak Dilaksanakan oleh Unit Kerja Perangkat Daerah yang Ada di Kecamatan',
+                'program_id' => 18,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 46,
+                'kode_kegiatan' => '7.01.02.2.03',
+                'nama_kegiatan' => 'Koordinasi Pemeliharaan Prasarana dan Sarana Pelayanan Umum',
+                'program_id' => 18,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 47,
+                'kode_kegiatan' => '7.01.02.2.04',
+                'nama_kegiatan' => 'Pelaksanaan Urusan Pemerintahan yang Dilimpahkan kepada Camat',
+                'program_id' => 18,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 48,
+                'kode_kegiatan' => '7.01.03.2.01',
+                'nama_kegiatan' => 'Koordinasi Kegiatan Pemberdayaan Desa',
+                'program_id' => 19,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 49,
+                'kode_kegiatan' => '7.01.03.2.03',
+                'nama_kegiatan' => 'Pemberdayaan Lembaga Kemasyarakatan Tingkat Kecamatan',
+                'program_id' => 19,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 50,
+                'kode_kegiatan' => '7.01.03.2.06',
+                'nama_kegiatan' => 'Pemberdayaan dan Kesejahteraan Keluarga Tingkat Kecamatan dan Kelurahan',
+                'program_id' => 19,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 51,
+                'kode_kegiatan' => '7.01.04.2.01',
+                'nama_kegiatan' => 'Koordinasi Upaya Penyelenggaraan Ketenteraman dan Ketertiban Umum',
+                'program_id' => 20,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 52,
+                'kode_kegiatan' => '7.01.04.2.02',
+                'nama_kegiatan' => 'Koordinasi Penerapan dan Penegakan Peraturan Daerah dan Peraturan Kepala Daerah',
+                'program_id' => 20,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 53,
+                'kode_kegiatan' => '7.01.05.2.01',
+                'nama_kegiatan' => 'Penyelenggaraan Urusan Pemerintahan Umum Sesuai Penugasan Kepala Daerah',
+                'program_id' => 21,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+            [
+                'id' => 54,
+                'kode_kegiatan' => '7.01.06.2.01',
+                'nama_kegiatan' => 'Fasilitasi, Rekomendasi dan Koordinasi Pembinaan dan Pengawasan Pemerintahan Desa',
+                'program_id' => 22,
+                'created_at' => '2026-03-30 10:13:02',
+                'updated_at' => '2026-03-30 10:13:02',
+                'instansi_id' => 1,
+            ],
+        ]);
+    }
+}
