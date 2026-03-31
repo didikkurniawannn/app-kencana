@@ -1,0 +1,284 @@
+[
+  {
+    "kode_sub_kegiatan": "7.01.01.2.01.0001",
+    "nama_sub_kegiatan": "Penyusunan Dokumen Perencanaan Perangkat Daerah",
+    "kode_kegiatan": "7.01.01.2.01",
+    "nama_kegiatan": "Perencanaan, Penganggaran, dan Evaluasi Kinerja Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.01.0006",
+    "nama_sub_kegiatan": "Koordinasi dan Penyusunan Laporan Capaian Kinerja dan Ikhtisar Realisasi Kinerja SKPD",
+    "kode_kegiatan": "7.01.01.2.01",
+    "nama_kegiatan": "Perencanaan, Penganggaran, dan Evaluasi Kinerja Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.01.0008",
+    "nama_sub_kegiatan": "Penyelenggaraan Walidata Pendukung Statistik Sektoral Daerah",
+    "kode_kegiatan": "7.01.01.2.01",
+    "nama_kegiatan": "Perencanaan, Penganggaran, dan Evaluasi Kinerja Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.01.0009",
+    "nama_sub_kegiatan": "Pelaksanaan Pengumpulan Data Statistik Sektoral Daerah",
+    "kode_kegiatan": "7.01.01.2.01",
+    "nama_kegiatan": "Perencanaan, Penganggaran, dan Evaluasi Kinerja Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN",
+    "kode_kegiatan": "7.01.01.2.02",
+    "nama_kegiatan": "Administrasi Keuangan Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.03.0006",
+    "nama_sub_kegiatan": "Penatausahaan Barang Milik Daerah pada SKPD",
+    "kode_kegiatan": "7.01.01.2.03",
+    "nama_kegiatan": "Administrasi Barang Milik Daerah pada Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.05.0002",
+    "nama_sub_kegiatan": "Pengadaan Pakaian Dinas Beserta Atribut Kelengkapannya",
+    "kode_kegiatan": "7.01.01.2.05",
+    "nama_kegiatan": "Administrasi Kepegawaian Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.05.0010",
+    "nama_sub_kegiatan": "Sosialisasi Peraturan Perundang-Undangan",
+    "kode_kegiatan": "7.01.01.2.05",
+    "nama_kegiatan": "Administrasi Kepegawaian Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.06.0001",
+    "nama_sub_kegiatan": "Penyediaan Komponen Instalasi Listrik/Penerangan Bangunan Kantor",
+    "kode_kegiatan": "7.01.01.2.06",
+    "nama_kegiatan": "Administrasi Umum Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.06.0002",
+    "nama_sub_kegiatan": "Penyediaan Peralatan dan Perlengkapan Kantor",
+    "kode_kegiatan": "7.01.01.2.06",
+    "nama_kegiatan": "Administrasi Umum Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.06.0003",
+    "nama_sub_kegiatan": "Penyediaan Peralatan Rumah Tangga",
+    "kode_kegiatan": "7.01.01.2.06",
+    "nama_kegiatan": "Administrasi Umum Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.06.0004",
+    "nama_sub_kegiatan": "Penyediaan Bahan Logistik Kantor",
+    "kode_kegiatan": "7.01.01.2.06",
+    "nama_kegiatan": "Administrasi Umum Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.06.0005",
+    "nama_sub_kegiatan": "Penyediaan Barang Cetakan dan Penggandaan",
+    "kode_kegiatan": "7.01.01.2.06",
+    "nama_kegiatan": "Administrasi Umum Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.06.0006",
+    "nama_sub_kegiatan": "Penyediaan Bahan Bacaan dan Peraturan Perundang-undangan",
+    "kode_kegiatan": "7.01.01.2.06",
+    "nama_kegiatan": "Administrasi Umum Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.06.0008",
+    "nama_sub_kegiatan": "Fasilitasi Kunjungan Tamu",
+    "kode_kegiatan": "7.01.01.2.06",
+    "nama_kegiatan": "Administrasi Umum Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.06.0009",
+    "nama_sub_kegiatan": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD",
+    "kode_kegiatan": "7.01.01.2.06",
+    "nama_kegiatan": "Administrasi Umum Perangkat Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.07.0005",
+    "nama_sub_kegiatan": "Pengadaan Mebel",
+    "kode_kegiatan": "7.01.01.2.07",
+    "nama_kegiatan": "Pengadaan Barang Milik Daerah Penunjang Urusan Pemerintah Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor",
+    "kode_kegiatan": "7.01.01.2.08",
+    "nama_kegiatan": "Penyediaan Jasa Penunjang Urusan Pemerintahan Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.09.0002",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan",
+    "kode_kegiatan": "7.01.01.2.09",
+    "nama_kegiatan": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.09.0006",
+    "nama_sub_kegiatan": "Pemeliharaan Peralatan dan Mesin Lainnya",
+    "kode_kegiatan": "7.01.01.2.09",
+    "nama_kegiatan": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.01.2.09.0009",
+    "nama_sub_kegiatan": "Pemeliharaan/Rehabilitasi Gedung Kantor dan Bangunan Lainnya",
+    "kode_kegiatan": "7.01.01.2.09",
+    "nama_kegiatan": "Pemeliharaan Barang Milik Daerah Penunjang Urusan Pemerintahan Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.02.2.02.0003",
+    "nama_sub_kegiatan": "Peningkatan Efektifitas Pelaksanaan Pelayanan kepada Masyarakat di Wilayah Kecamatan",
+    "kode_kegiatan": "7.01.02.2.02",
+    "nama_kegiatan": "Penyelenggaraan Urusan Pemerintahan yang Tidak Dilaksanakan oleh Unit Kerja Perangkat Daerah yang Ada di Kecamatan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.02.2.03.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah dan/atau Instansi Vertikal yang Terkait dalam Pemeliharaan Sarana dan Prasarana Pelayanan Umum",
+    "kode_kegiatan": "7.01.02.2.03",
+    "nama_kegiatan": "Koordinasi Pemeliharaan Prasarana dan Sarana Pelayanan Umum"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan",
+    "kode_kegiatan": "7.01.02.2.04",
+    "nama_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Dilimpahkan kepada Camat"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.01.0001",
+    "nama_sub_kegiatan": "Peningkatan Partisipasi Masyarakat dalam Forum Musyawarah Perencanaan Pembangunan di Desa",
+    "kode_kegiatan": "7.01.03.2.01",
+    "nama_kegiatan": "Koordinasi Kegiatan Pemberdayaan Desa"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.01.0003",
+    "nama_sub_kegiatan": "Peningkatan Efektifitas Kegiatan Pemberdayaan Masyarakat di Wilayah Kecamatan",
+    "kode_kegiatan": "7.01.03.2.01",
+    "nama_kegiatan": "Koordinasi Kegiatan Pemberdayaan Desa"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.03.0002",
+    "nama_sub_kegiatan": "Peningkatan Kapasitas Lembaga Kemasyarakatan",
+    "kode_kegiatan": "7.01.03.2.03",
+    "nama_kegiatan": "Pemberdayaan Lembaga Kemasyarakatan Tingkat Kecamatan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.03.0004",
+    "nama_sub_kegiatan": "Fasilitasi Pengembangan Usaha Ekonomi Masyarakat",
+    "kode_kegiatan": "7.01.03.2.03",
+    "nama_kegiatan": "Pemberdayaan Lembaga Kemasyarakatan Tingkat Kecamatan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.03.0005",
+    "nama_sub_kegiatan": "Fasilitasi Pemanfaatan Teknologi Tepat Guna",
+    "kode_kegiatan": "7.01.03.2.03",
+    "nama_kegiatan": "Pemberdayaan Lembaga Kemasyarakatan Tingkat Kecamatan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.06.0001",
+    "nama_sub_kegiatan": "Pembentukan dan Penumbuhan Karakter Keluarga Melalui Peningkatan Kesadaran Masyarakat akan Pentingnya Penghayatan dan Pengamalan Pancasila dalam Semua Aspek Kehidupan Bermasyarakat, Berbangsa, dan Bernegara",
+    "kode_kegiatan": "7.01.03.2.06",
+    "nama_kegiatan": "Pemberdayaan dan Kesejahteraan Keluarga Tingkat Kecamatan dan Kelurahan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.06.0003",
+    "nama_sub_kegiatan": "Peningkatan Ketahanan Pangan Keluarga",
+    "kode_kegiatan": "7.01.03.2.06",
+    "nama_kegiatan": "Pemberdayaan dan Kesejahteraan Keluarga Tingkat Kecamatan dan Kelurahan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.06.0005",
+    "nama_sub_kegiatan": "Peningkatan Kesadaran Keluarga dalam Mewujudkan Rumah Sehat dan Layak Huni serta Kesadaran Hukum tentang Kepemilikan Rumah",
+    "kode_kegiatan": "7.01.03.2.06",
+    "nama_kegiatan": "Pemberdayaan dan Kesejahteraan Keluarga Tingkat Kecamatan dan Kelurahan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.06.0006",
+    "nama_sub_kegiatan": "Peningkatan Kesadaran Keluarga dalam Peningkatan Pendidikan dan Keterampilan untuk Mewujudkan Sumber Daya Manusia yang Berkualitas dan Berdaya Saing",
+    "kode_kegiatan": "7.01.03.2.06",
+    "nama_kegiatan": "Pemberdayaan dan Kesejahteraan Keluarga Tingkat Kecamatan dan Kelurahan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.06.0007",
+    "nama_sub_kegiatan": "Penumbuhan Kesadaran Keluarga dalam Peningkatan Derajat Kesehatan Keluarga dan Lingkungan dengan Menerapkan Perilaku Hidup Bersih dan Sehat",
+    "kode_kegiatan": "7.01.03.2.06",
+    "nama_kegiatan": "Pemberdayaan dan Kesejahteraan Keluarga Tingkat Kecamatan dan Kelurahan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.06.0008",
+    "nama_sub_kegiatan": "Penumbuhan Kesadaran Keluarga dalam Peningkatan Taraf Hidup Keluarga Melalui Kehidupan Berkoperasi dan Pengembangan Ekonomi Lainnya",
+    "kode_kegiatan": "7.01.03.2.06",
+    "nama_kegiatan": "Pemberdayaan dan Kesejahteraan Keluarga Tingkat Kecamatan dan Kelurahan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.06.0010",
+    "nama_sub_kegiatan": "Pelatihan Keluarga Tanggap Bencana Alam",
+    "kode_kegiatan": "7.01.03.2.06",
+    "nama_kegiatan": "Pemberdayaan dan Kesejahteraan Keluarga Tingkat Kecamatan dan Kelurahan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.06.0011",
+    "nama_sub_kegiatan": "Pelatihan Keluarga Tanggap Bencana Rumah Tangga",
+    "kode_kegiatan": "7.01.03.2.06",
+    "nama_kegiatan": "Pemberdayaan dan Kesejahteraan Keluarga Tingkat Kecamatan dan Kelurahan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.03.2.06.0012",
+    "nama_sub_kegiatan": "Penumbuhan dan Peningkatan Kesadaran Keluarga dalam Keterlibatan Perencanaan Kehidupan Menuju Keluarga Berkualitas",
+    "kode_kegiatan": "7.01.03.2.06",
+    "nama_kegiatan": "Pemberdayaan dan Kesejahteraan Keluarga Tingkat Kecamatan dan Kelurahan"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.04.2.01.0001",
+    "nama_sub_kegiatan": "Sinergitas dengan Kepolisian Negara Republik Indonesia, Tentara Nasional Indonesia dan Instansi Vertikal di Wilayah Kecamatan",
+    "kode_kegiatan": "7.01.04.2.01",
+    "nama_kegiatan": "Koordinasi Upaya Penyelenggaraan Ketenteraman dan Ketertiban Umum"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.04.2.01.0002",
+    "nama_sub_kegiatan": "Harmonisasi Hubungan dengan Tokoh Agama dan Tokoh Masyarakat",
+    "kode_kegiatan": "7.01.04.2.01",
+    "nama_kegiatan": "Koordinasi Upaya Penyelenggaraan Ketenteraman dan Ketertiban Umum"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.04.2.02.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah yang Tugas dan Fungsinya di Bidang Penegakan Peraturan Perundang-Undangan dan/atau Kepolisian Negara Republik Indonesia",
+    "kode_kegiatan": "7.01.04.2.02",
+    "nama_kegiatan": "Koordinasi Penerapan dan Penegakan Peraturan Daerah dan Peraturan Kepala Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional",
+    "kode_kegiatan": "7.01.05.2.01",
+    "nama_kegiatan": "Penyelenggaraan Urusan Pemerintahan Umum Sesuai Penugasan Kepala Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.05.2.01.0004",
+    "nama_sub_kegiatan": "Pembinaan Kerukunan Antar Suku dan Intra Suku, Umat Beragama, Ras, dan Golongan Lainnya Guna Mewujudkan Stabilitas Keamanan Lokal, Regional, dan Nasional",
+    "kode_kegiatan": "7.01.05.2.01",
+    "nama_kegiatan": "Penyelenggaraan Urusan Pemerintahan Umum Sesuai Penugasan Kepala Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.05.2.01.0008",
+    "nama_sub_kegiatan": "Pelaksanaan Tugas Forum Koordinasi Pimpinan di Kecamatan",
+    "kode_kegiatan": "7.01.05.2.01",
+    "nama_kegiatan": "Penyelenggaraan Urusan Pemerintahan Umum Sesuai Penugasan Kepala Daerah"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.06.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi Administrasi Tata Pemerintahan Desa",
+    "kode_kegiatan": "7.01.06.2.01",
+    "nama_kegiatan": "Fasilitasi, Rekomendasi dan Koordinasi Pembinaan dan Pengawasan Pemerintahan Desa"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.06.2.01.0003",
+    "nama_sub_kegiatan": "Fasilitasi Pengelolaan Keuangan Desa dan Pendayagunaan Aset Desa",
+    "kode_kegiatan": "7.01.06.2.01",
+    "nama_kegiatan": "Fasilitasi, Rekomendasi dan Koordinasi Pembinaan dan Pengawasan Pemerintahan Desa"
+  },
+  {
+    "kode_sub_kegiatan": "7.01.06.2.01.0009",
+    "nama_sub_kegiatan": "Fasilitasi Sinkronisasi Perencanaan Pembangunan Daerah dengan Pembangunan Desa",
+    "kode_kegiatan": "7.01.06.2.01",
+    "nama_kegiatan": "Fasilitasi, Rekomendasi dan Koordinasi Pembinaan dan Pengawasan Pemerintahan Desa"
+  }
+]

@@ -1,0 +1,1226 @@
+[
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.01.0001",
+    "nama_sub_kegiatan": "Penyusunan Dokumen Perencanaan Perangkat Daerah"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.01.2.01.0001",
+    "nama_sub_kegiatan": "Penyusunan Dokumen Perencanaan Perangkat Daerah"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0004",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Dalam Kota",
+    "kode_sub_kegiatan": "7.01.01.2.01.0001",
+    "nama_sub_kegiatan": "Penyusunan Dokumen Perencanaan Perangkat Daerah"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0001",
+    "nama_rekening": "Belanja Perjalanan Dinas Biasa",
+    "kode_sub_kegiatan": "7.01.01.2.01.0001",
+    "nama_sub_kegiatan": "Penyusunan Dokumen Perencanaan Perangkat Daerah"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0005",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Luar Kota",
+    "kode_sub_kegiatan": "7.01.01.2.01.0001",
+    "nama_sub_kegiatan": "Penyusunan Dokumen Perencanaan Perangkat Daerah"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.01.0006",
+    "nama_sub_kegiatan": "Koordinasi dan Penyusunan Laporan Capaian Kinerja dan Ikhtisar Realisasi Kinerja SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.01.2.01.0006",
+    "nama_sub_kegiatan": "Koordinasi dan Penyusunan Laporan Capaian Kinerja dan Ikhtisar Realisasi Kinerja SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0004",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Dalam Kota",
+    "kode_sub_kegiatan": "7.01.01.2.01.0006",
+    "nama_sub_kegiatan": "Koordinasi dan Penyusunan Laporan Capaian Kinerja dan Ikhtisar Realisasi Kinerja SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0001",
+    "nama_rekening": "Belanja Perjalanan Dinas Biasa",
+    "kode_sub_kegiatan": "7.01.01.2.01.0006",
+    "nama_sub_kegiatan": "Koordinasi dan Penyusunan Laporan Capaian Kinerja dan Ikhtisar Realisasi Kinerja SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0005",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Luar Kota",
+    "kode_sub_kegiatan": "7.01.01.2.01.0006",
+    "nama_sub_kegiatan": "Koordinasi dan Penyusunan Laporan Capaian Kinerja dan Ikhtisar Realisasi Kinerja SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.01.0008",
+    "nama_sub_kegiatan": "Penyelenggaraan Walidata Pendukung Statistik Sektoral Daerah"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.01.2.01.0008",
+    "nama_sub_kegiatan": "Penyelenggaraan Walidata Pendukung Statistik Sektoral Daerah"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.01.2.01.0008",
+    "nama_sub_kegiatan": "Penyelenggaraan Walidata Pendukung Statistik Sektoral Daerah"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0005",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Luar Kota",
+    "kode_sub_kegiatan": "7.01.01.2.01.0008",
+    "nama_sub_kegiatan": "Penyelenggaraan Walidata Pendukung Statistik Sektoral Daerah"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.01.0009",
+    "nama_sub_kegiatan": "Pelaksanaan Pengumpulan Data Statistik Sektoral Daerah"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.01.2.01.0009",
+    "nama_sub_kegiatan": "Pelaksanaan Pengumpulan Data Statistik Sektoral Daerah"
+  },
+  {
+    "kode_rekening": "5.1.01.01.01.0001",
+    "nama_rekening": "Belanja Gaji Pokok PNS",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.01.0002",
+    "nama_rekening": "Belanja Gaji Pokok PPPK",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.02.0001",
+    "nama_rekening": "Belanja Tunjangan Keluarga PNS",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.02.0002",
+    "nama_rekening": "Belanja Tunjangan Keluarga PPPK",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.02.0002",
+    "nama_rekening": "Belanja Tunjangan Keluarga PPPK 2025",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.03.0001",
+    "nama_rekening": "Belanja Tunjangan Jabatan PNS",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.04.0002",
+    "nama_rekening": "Belanja Tunjangan Fungsional PPPK",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.05.0001",
+    "nama_rekening": "Belanja Tunjangan Fungsional Umum PNS",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.05.0002",
+    "nama_rekening": "Belanja Tunjangan Fungsional Umum PPPK",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.06.0001",
+    "nama_rekening": "Belanja Tunjangan Beras PNS",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.06.0002",
+    "nama_rekening": "Belanja Tunjangan Beras PPPK",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.07.0001",
+    "nama_rekening": "Belanja Tunjangan PPh/Tunjangan Khusus PNS",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.08.0001",
+    "nama_rekening": "Belanja Pembulatan Gaji PNS",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.08.0002",
+    "nama_rekening": "Belanja Pembulatan Gaji PPPK",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.09.0001",
+    "nama_rekening": "Belanja Iuran Jaminan Kesehatan PNS",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.01.01.09.0002",
+    "nama_rekening": "Belanja Iuran Jaminan Kesehatan PPPK",
+    "kode_sub_kegiatan": "7.01.01.2.02.0001",
+    "nama_sub_kegiatan": "Penyediaan Gaji dan Tunjangan ASN"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.01.2.03.0006",
+    "nama_sub_kegiatan": "Penatausahaan Barang Milik Daerah pada SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0005",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Luar Kota",
+    "kode_sub_kegiatan": "7.01.01.2.03.0006",
+    "nama_sub_kegiatan": "Penatausahaan Barang Milik Daerah pada SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0064",
+    "nama_rekening": "Belanja Pakaian Dinas Lapangan (PDL)",
+    "kode_sub_kegiatan": "7.01.01.2.05.0002",
+    "nama_sub_kegiatan": "Pengadaan Pakaian Dinas Beserta Atribut Kelengkapannya"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.01.2.05.0010",
+    "nama_sub_kegiatan": "Sosialisasi Peraturan Perundang-Undangan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.01.2.05.0010",
+    "nama_sub_kegiatan": "Sosialisasi Peraturan Perundang-Undangan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.06.0001",
+    "nama_sub_kegiatan": "Penyediaan Komponen Instalasi Listrik/Penerangan Bangunan Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0031",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Listrik",
+    "kode_sub_kegiatan": "7.01.01.2.06.0001",
+    "nama_sub_kegiatan": "Penyediaan Komponen Instalasi Listrik/Penerangan Bangunan Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.01.2.06.0002",
+    "nama_sub_kegiatan": "Penyediaan Peralatan dan Perlengkapan Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0025",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Kertas dan Cover",
+    "kode_sub_kegiatan": "7.01.01.2.06.0002",
+    "nama_sub_kegiatan": "Penyediaan Peralatan dan Perlengkapan Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.01.001.00035",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Suvenir/Cendera Mata",
+    "kode_sub_kegiatan": "7.01.01.2.06.0002",
+    "nama_sub_kegiatan": "Penyediaan Peralatan dan Perlengkapan Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0029",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor-Bahan Komputer",
+    "kode_sub_kegiatan": "7.01.01.2.06.0002",
+    "nama_sub_kegiatan": "Penyediaan Peralatan dan Perlengkapan Kantor"
+  },
+  {
+    "kode_rekening": "5.2.02.10.01.0002",
+    "nama_rekening": "Belanja Modal Personal Computer",
+    "kode_sub_kegiatan": "7.01.01.2.06.0002",
+    "nama_sub_kegiatan": "Penyediaan Peralatan dan Perlengkapan Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0012",
+    "nama_rekening": "Belanja Bahan-Bahan Lainnya",
+    "kode_sub_kegiatan": "7.01.01.2.06.0003",
+    "nama_sub_kegiatan": "Penyediaan Peralatan Rumah Tangga"
+  },
+  {
+    "kode_rekening": "5.2.02.05.02.0004",
+    "nama_rekening": "Belanja Modal Alat Pendingin",
+    "kode_sub_kegiatan": "7.01.01.2.06.0003",
+    "nama_sub_kegiatan": "Penyediaan Peralatan Rumah Tangga"
+  },
+  {
+    "kode_rekening": "5.2.02.05.02.0006",
+    "nama_rekening": "Belanja Modal Alat Rumah Tangga Lainnya (Home Use)",
+    "kode_sub_kegiatan": "7.01.01.2.06.0003",
+    "nama_sub_kegiatan": "Penyediaan Peralatan Rumah Tangga"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.06.0004",
+    "nama_sub_kegiatan": "Penyediaan Bahan Logistik Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0043",
+    "nama_rekening": "Belanja Natura dan Pakan-Natura",
+    "kode_sub_kegiatan": "7.01.01.2.06.0004",
+    "nama_sub_kegiatan": "Penyediaan Bahan Logistik Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.01.2.06.0004",
+    "nama_sub_kegiatan": "Penyediaan Bahan Logistik Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.01.2.06.0005",
+    "nama_sub_kegiatan": "Penyediaan Barang Cetakan dan Penggandaan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.06.0006",
+    "nama_sub_kegiatan": "Penyediaan Bahan Bacaan dan Peraturan Perundang-undangan"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0062",
+    "nama_rekening": "Belanja Langganan Jurnal/Surat Kabar/Majalah",
+    "kode_sub_kegiatan": "7.01.01.2.06.0006",
+    "nama_sub_kegiatan": "Penyediaan Bahan Bacaan dan Peraturan Perundang-undangan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.06.0008",
+    "nama_sub_kegiatan": "Fasilitasi Kunjungan Tamu"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0053",
+    "nama_rekening": "Belanja Makanan dan Minuman Jamuan Tamu",
+    "kode_sub_kegiatan": "7.01.01.2.06.0008",
+    "nama_sub_kegiatan": "Fasilitasi Kunjungan Tamu"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.06.0009",
+    "nama_sub_kegiatan": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.01.2.06.0009",
+    "nama_sub_kegiatan": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.01.2.06.0009",
+    "nama_sub_kegiatan": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0004",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Dalam Kota",
+    "kode_sub_kegiatan": "7.01.01.2.06.0009",
+    "nama_sub_kegiatan": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0001",
+    "nama_rekening": "Belanja Perjalanan Dinas Biasa",
+    "kode_sub_kegiatan": "7.01.01.2.06.0009",
+    "nama_sub_kegiatan": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0005",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Luar Kota",
+    "kode_sub_kegiatan": "7.01.01.2.06.0009",
+    "nama_sub_kegiatan": "Penyelenggaraan Rapat Koordinasi dan Konsultasi SKPD"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.07.0005",
+    "nama_sub_kegiatan": "Pengadaan Mebel"
+  },
+  {
+    "kode_rekening": "5.2.02.05.02.0001",
+    "nama_rekening": "Belanja Modal Mebel",
+    "kode_sub_kegiatan": "7.01.01.2.07.0005",
+    "nama_sub_kegiatan": "Pengadaan Mebel"
+  },
+  {
+    "kode_rekening": "5.1.02.01.004.00118",
+    "nama_rekening": "Belanja Peralatan dan Mesin-Alat Kantor dan Rumah Tangga-Alat Rumah Tangga-Mebel",
+    "kode_sub_kegiatan": "7.01.01.2.07.0005",
+    "nama_sub_kegiatan": "Pengadaan Mebel"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0027",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor-Benda Pos",
+    "kode_sub_kegiatan": "7.01.01.2.07.0005",
+    "nama_sub_kegiatan": "Pengadaan Mebel"
+  },
+  {
+    "kode_rekening": "5.1.02.02.001.00041",
+    "nama_rekening": "Belanja Jasa Pemasangan Instalasi Telepon, Air, dan Listrik",
+    "kode_sub_kegiatan": "7.01.01.2.07.0005",
+    "nama_sub_kegiatan": "Pengadaan Mebel"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.07.0005",
+    "nama_sub_kegiatan": "Pengadaan Mebel"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0060",
+    "nama_rekening": "Belanja Tagihan Air",
+    "kode_sub_kegiatan": "7.01.01.2.07.0005",
+    "nama_sub_kegiatan": "Pengadaan Mebel"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0061",
+    "nama_rekening": "Belanja Tagihan Listrik",
+    "kode_sub_kegiatan": "7.01.01.2.07.0005",
+    "nama_sub_kegiatan": "Pengadaan Mebel"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0063",
+    "nama_rekening": "Belanja Kawat/Faksimili/Internet/TV Berlangganan",
+    "kode_sub_kegiatan": "7.01.01.2.07.0005",
+    "nama_sub_kegiatan": "Pengadaan Mebel"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0026",
+    "nama_rekening": "Belanja Jasa Tenaga Administrasi",
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor"
+  },
+  {
+    "kode_rekening": "8.1.02.02.01.0030",
+    "nama_rekening": "Belanja Jasa Tenaga Kebersihan",
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0039",
+    "nama_rekening": "Belanja Jasa Tenaga Informasi dan Teknologi",
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0044",
+    "nama_rekening": "Belanja Jasa Pelayanan Perpustakaan",
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0071",
+    "nama_rekening": "Belanja Lembur",
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0088",
+    "nama_rekening": "Belanja jasa Pegawai Pemerintah dengan Perjanjian Kerja (PPPK) Paruh Waktu pada jabatan operator layanan operasional",
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0090",
+    "nama_rekening": "Belanja jasa Pegawai Pemerintah dengan Perjanjian Kerja (PPPK) Paruh Waktu pada jabatan penata layanan operasional",
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.02.02.0005",
+    "nama_rekening": "Belanja Iuran Jaminan Kesehatan bagi Non ASN",
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.02.02.0006",
+    "nama_rekening": "Belanja Iuran Jaminan Kecelakaan Kerja bagi Non ASN",
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.02.02.0006",
+    "nama_rekening": "Belanja Iuran Jaminan Kematian bagi Non ASN",
+    "kode_sub_kegiatan": "7.01.01.2.08.0004",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pelayanan Umum Kantor"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0004",
+    "nama_rekening": "Belanja Bahan-Bahan Bakar dan Pelumas",
+    "kode_sub_kegiatan": "7.01.01.2.09.0002",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.09.0002",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0067",
+    "nama_rekening": "Belanja Pembayaran Pajak, Bea, dan Perizinan",
+    "kode_sub_kegiatan": "7.01.01.2.09.0002",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan"
+  },
+  {
+    "kode_rekening": "5.1.02.03.02.0036",
+    "nama_rekening": "Belanja Pemeliharaan Alat Angkutan-Alat Angkutan Darat Bermotor-Kendaraan Bermotor Penumpang",
+    "kode_sub_kegiatan": "7.01.01.2.09.0002",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan"
+  },
+  {
+    "kode_rekening": "5.1.02.03.02.0039",
+    "nama_rekening": "Belanja Pemeliharaan Alat Angkutan-Alat Angkutan Darat Bermotor-Kendaraan Bermotor Beroda Tiga",
+    "kode_sub_kegiatan": "7.01.01.2.09.0002",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan"
+  },
+  {
+    "kode_rekening": "5.1.02.03.02.0038",
+    "nama_rekening": "Belanja Pemeliharaan Alat Angkutan-Alat Angkutan Darat Bermotor-Kendaraan Bermotor Beroda Dua",
+    "kode_sub_kegiatan": "7.01.01.2.09.0002",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan"
+  },
+  {
+    "kode_rekening": "5.1.02.03.02.0043",
+    "nama_rekening": "Belanja Pemeliharaan Alat Angkutan-Alat Angkutan Darat Bermotor-Alat Angkutan Darat Bermotor Lainnya",
+    "kode_sub_kegiatan": "7.01.01.2.09.0002",
+    "nama_sub_kegiatan": "Penyediaan Jasa Pemeliharaan, Biaya Pemeliharaan, Pajak dan Perizinan Kendaraan Dinas Operasional atau Lapangan"
+  },
+  {
+    "kode_rekening": "5.1.02.03.02.0121",
+    "nama_rekening": "Belanja Pemeliharaan Alat Kantor dan Rumah Tangga-Alat Rumah Tangga-Alat Pendingin",
+    "kode_sub_kegiatan": "7.01.01.2.09.0006",
+    "nama_sub_kegiatan": "Pemeliharaan Peralatan dan Mesin Lainnya"
+  },
+  {
+    "kode_rekening": "5.1.02.03.02.0405",
+    "nama_rekening": "Belanja Pemeliharaan Komputer-Komputer Unit-Personal Computer",
+    "kode_sub_kegiatan": "7.01.01.2.09.0006",
+    "nama_sub_kegiatan": "Pemeliharaan Peralatan dan Mesin Lainnya"
+  },
+  {
+    "kode_rekening": "5.1.02.03.02.0409",
+    "nama_rekening": "Belanja Pemeliharaan Komputer-Peralatan Komputer-Peralatan Personal Computer",
+    "kode_sub_kegiatan": "7.01.01.2.09.0006",
+    "nama_sub_kegiatan": "Pemeliharaan Peralatan dan Mesin Lainnya"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.01.2.09.0009",
+    "nama_sub_kegiatan": "Pemeliharaan/Rehabilitasi Gedung Kantor dan Bangunan Lainnya"
+  },
+  {
+    "kode_rekening": "5.1.02.03.03.0001",
+    "nama_rekening": "Belanja Pemeliharaan Bangunan Gedung-Bangunan Gedung Tempat Kerja-Bangunan Gedung Kantor",
+    "kode_sub_kegiatan": "7.01.01.2.09.0009",
+    "nama_sub_kegiatan": "Pemeliharaan/Rehabilitasi Gedung Kantor dan Bangunan Lainnya"
+  },
+  {
+    "kode_rekening": "5.2.03.01.01.0001",
+    "nama_rekening": "Belanja Modal Bangunan Gedung Kantor",
+    "kode_sub_kegiatan": "7.01.01.2.09.0009",
+    "nama_sub_kegiatan": "Pemeliharaan/Rehabilitasi Gedung Kantor dan Bangunan Lainnya"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.02.2.02.0003",
+    "nama_sub_kegiatan": "Peningkatan Efektifitas Pelaksanaan Pelayanan kepada Masyarakat di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.02.2.02.0003",
+    "nama_sub_kegiatan": "Peningkatan Efektifitas Pelaksanaan Pelayanan kepada Masyarakat di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.02.01.0028",
+    "nama_rekening": "Belanja Jasa Tenaga Pelayanan Umum",
+    "kode_sub_kegiatan": "7.01.02.2.02.0003",
+    "nama_sub_kegiatan": "Peningkatan Efektifitas Pelaksanaan Pelayanan kepada Masyarakat di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.02.2.03.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah dan/atau Instansi Vertikal yang Terkait dalam Pemeliharaan Sarana dan Prasarana Pelayanan Umum"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.02.2.03.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah dan/atau Instansi Vertikal yang Terkait dalam Pemeliharaan Sarana dan Prasarana Pelayanan Umum"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0058",
+    "nama_rekening": "Belanja Makanan dan Minuman Aktivitas Lapangan",
+    "kode_sub_kegiatan": "7.01.02.2.03.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah dan/atau Instansi Vertikal yang Terkait dalam Pemeliharaan Sarana dan Prasarana Pelayanan Umum"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.02.2.03.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah dan/atau Instansi Vertikal yang Terkait dalam Pemeliharaan Sarana dan Prasarana Pelayanan Umum"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0004",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Dalam Kota",
+    "kode_sub_kegiatan": "7.01.02.2.03.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah dan/atau Instansi Vertikal yang Terkait dalam Pemeliharaan Sarana dan Prasarana Pelayanan Umum"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0005",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Luar Kota",
+    "kode_sub_kegiatan": "7.01.02.2.03.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah dan/atau Instansi Vertikal yang Terkait dalam Pemeliharaan Sarana dan Prasarana Pelayanan Umum"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0039",
+    "nama_rekening": "Belanja Barang untuk Dijual/Diserahkan kepada Masyarakat",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0058",
+    "nama_rekening": "Belanja Makanan dan Minuman Aktivitas Lapangan",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0076",
+    "nama_rekening": "Belanja Pakaian Olahraga",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.02.04.0117",
+    "nama_rekening": "Belanja Sewa Alat Kantor Lainnya",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.02.005.00009",
+    "nama_rekening": "Belanja Sewa Bangunan Gedung Tempat Pertemuan",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0004",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Dalam Kota",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0001",
+    "nama_rekening": "Belanja Perjalanan Dinas Biasa",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0005",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Luar Kota",
+    "kode_sub_kegiatan": "7.01.02.2.04.0003",
+    "nama_sub_kegiatan": "Pelaksanaan Urusan Pemerintahan yang Terkait dengan Kewenangan Lain yang Dilimpahkan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.03.2.01.0001",
+    "nama_sub_kegiatan": "Peningkatan Partisipasi Masyarakat dalam Forum Musyawarah Perencanaan Pembangunan di Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.01.0001",
+    "nama_sub_kegiatan": "Peningkatan Partisipasi Masyarakat dalam Forum Musyawarah Perencanaan Pembangunan di Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.03.2.01.0001",
+    "nama_sub_kegiatan": "Peningkatan Partisipasi Masyarakat dalam Forum Musyawarah Perencanaan Pembangunan di Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.03.2.01.0003",
+    "nama_sub_kegiatan": "Peningkatan Efektifitas Kegiatan Pemberdayaan Masyarakat di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.01.0003",
+    "nama_sub_kegiatan": "Peningkatan Efektifitas Kegiatan Pemberdayaan Masyarakat di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.03.2.01.0003",
+    "nama_sub_kegiatan": "Peningkatan Efektifitas Kegiatan Pemberdayaan Masyarakat di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.03.2.01.0003",
+    "nama_sub_kegiatan": "Peningkatan Efektifitas Kegiatan Pemberdayaan Masyarakat di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0004",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Dalam Kota",
+    "kode_sub_kegiatan": "7.01.03.2.01.0003",
+    "nama_sub_kegiatan": "Peningkatan Efektifitas Kegiatan Pemberdayaan Masyarakat di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0005",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Luar Kota",
+    "kode_sub_kegiatan": "7.01.03.2.01.0003",
+    "nama_sub_kegiatan": "Peningkatan Efektifitas Kegiatan Pemberdayaan Masyarakat di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.03.2.03.0002",
+    "nama_sub_kegiatan": "Peningkatan Kapasitas Lembaga Kemasyarakatan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.03.0002",
+    "nama_sub_kegiatan": "Peningkatan Kapasitas Lembaga Kemasyarakatan"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.03.2.03.0002",
+    "nama_sub_kegiatan": "Peningkatan Kapasitas Lembaga Kemasyarakatan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.03.2.03.0002",
+    "nama_sub_kegiatan": "Peningkatan Kapasitas Lembaga Kemasyarakatan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.03.2.03.0004",
+    "nama_sub_kegiatan": "Fasilitasi Pengembangan Usaha Ekonomi Masyarakat"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.03.0004",
+    "nama_sub_kegiatan": "Fasilitasi Pengembangan Usaha Ekonomi Masyarakat"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.03.2.03.0004",
+    "nama_sub_kegiatan": "Fasilitasi Pengembangan Usaha Ekonomi Masyarakat"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.03.2.03.0005",
+    "nama_sub_kegiatan": "Fasilitasi Pemanfaatan Teknologi Tepat Guna"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.03.0005",
+    "nama_sub_kegiatan": "Fasilitasi Pemanfaatan Teknologi Tepat Guna"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.03.2.03.0005",
+    "nama_sub_kegiatan": "Fasilitasi Pemanfaatan Teknologi Tepat Guna"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.06.0001",
+    "nama_sub_kegiatan": "Pembentukan dan Penumbuhan Karakter Keluarga Melalui Peningkatan Kesadaran Masyarakat akan Pentingnya Penghayatan dan Pengamalan Pancasila dalam Semua Aspek Kehidupan Bermasyarakat, Berbangsa, dan Bernegara"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.03.2.06.0003",
+    "nama_sub_kegiatan": "Peningkatan Ketahanan Pangan Keluarga"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.06.0003",
+    "nama_sub_kegiatan": "Peningkatan Ketahanan Pangan Keluarga"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.03.2.06.0003",
+    "nama_sub_kegiatan": "Peningkatan Ketahanan Pangan Keluarga"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.06.0005",
+    "nama_sub_kegiatan": "Peningkatan Kesadaran Keluarga dalam Mewujudkan Rumah Sehat dan Layak Huni serta Kesadaran Hukum tentang Kepemilikan Rumah"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.06.0006",
+    "nama_sub_kegiatan": "Peningkatan Kesadaran Keluarga dalam Peningkatan Pendidikan dan Keterampilan untuk Mewujudkan Sumber Daya Manusia yang Berkualitas dan Berdaya Saing"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.06.0007",
+    "nama_sub_kegiatan": "Penumbuhan Kesadaran Keluarga dalam Peningkatan Derajat Kesehatan Keluarga dan Lingkungan dengan Menerapkan Perilaku Hidup Bersih dan Sehat"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.06.0008",
+    "nama_sub_kegiatan": "Penumbuhan Kesadaran Keluarga dalam Peningkatan Taraf Hidup Keluarga Melalui Kehidupan Berkoperasi dan Pengembangan Ekonomi Lainnya"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.03.2.06.0010",
+    "nama_sub_kegiatan": "Pelatihan Keluarga Tanggap Bencana Alam"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.03.2.06.0010",
+    "nama_sub_kegiatan": "Pelatihan Keluarga Tanggap Bencana Alam"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0058",
+    "nama_rekening": "Belanja Makanan dan Minuman Aktivitas Lapangan",
+    "kode_sub_kegiatan": "7.01.03.2.06.0010",
+    "nama_sub_kegiatan": "Pelatihan Keluarga Tanggap Bencana Alam"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.03.2.06.0011",
+    "nama_sub_kegiatan": "Pelatihan Keluarga Tanggap Bencana Rumah Tangga"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.03.2.06.0011",
+    "nama_sub_kegiatan": "Pelatihan Keluarga Tanggap Bencana Rumah Tangga"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.03.2.06.0012",
+    "nama_sub_kegiatan": "Penumbuhan dan Peningkatan Kesadaran Keluarga dalam Keterlibatan Perencanaan Kehidupan Menuju Keluarga Berkualitas"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.04.2.01.0001",
+    "nama_sub_kegiatan": "Sinergitas dengan Kepolisian Negara Republik Indonesia, Tentara Nasional Indonesia dan Instansi Vertikal di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.04.2.01.0001",
+    "nama_sub_kegiatan": "Sinergitas dengan Kepolisian Negara Republik Indonesia, Tentara Nasional Indonesia dan Instansi Vertikal di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0058",
+    "nama_rekening": "Belanja Makanan dan Minuman Aktivitas Lapangan",
+    "kode_sub_kegiatan": "7.01.04.2.01.0001",
+    "nama_sub_kegiatan": "Sinergitas dengan Kepolisian Negara Republik Indonesia, Tentara Nasional Indonesia dan Instansi Vertikal di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.04.2.01.0001",
+    "nama_sub_kegiatan": "Sinergitas dengan Kepolisian Negara Republik Indonesia, Tentara Nasional Indonesia dan Instansi Vertikal di Wilayah Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.04.2.01.0002",
+    "nama_sub_kegiatan": "Harmonisasi Hubungan dengan Tokoh Agama dan Tokoh Masyarakat"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.04.2.01.0002",
+    "nama_sub_kegiatan": "Harmonisasi Hubungan dengan Tokoh Agama dan Tokoh Masyarakat"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0026",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Bahan Cetak",
+    "kode_sub_kegiatan": "7.01.04.2.02.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah yang Tugas dan Fungsinya di Bidang Penegakan Peraturan Perundang-Undangan dan/atau Kepolisian Negara Republik Indonesia"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.04.2.02.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah yang Tugas dan Fungsinya di Bidang Penegakan Peraturan Perundang-Undangan dan/atau Kepolisian Negara Republik Indonesia"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0058",
+    "nama_rekening": "Belanja Makanan dan Minuman Aktivitas Lapangan",
+    "kode_sub_kegiatan": "7.01.04.2.02.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah yang Tugas dan Fungsinya di Bidang Penegakan Peraturan Perundang-Undangan dan/atau Kepolisian Negara Republik Indonesia"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.04.2.02.0001",
+    "nama_sub_kegiatan": "Koordinasi/Sinergi dengan Perangkat Daerah yang Tugas dan Fungsinya di Bidang Penegakan Peraturan Perundang-Undangan dan/atau Kepolisian Negara Republik Indonesia"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0053",
+    "nama_rekening": "Belanja Makanan dan Minuman Jamuan Tamu",
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0058",
+    "nama_rekening": "Belanja Makanan dan Minuman Aktivitas Lapangan",
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.02.04.0117",
+    "nama_rekening": "Belanja Sewa Alat Kantor Lainnya",
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.02.04.0132",
+    "nama_rekening": "Belanja Sewa Peralatan Studio Audio",
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0036",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat/Bahan untuk Kegiatan Kantor Lainnya",
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.02.04.0118",
+    "nama_rekening": "Belanja Sewa Mebel",
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0004",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Dalam Kota",
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0005",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Luar Kota",
+    "kode_sub_kegiatan": "7.01.05.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi, Koordinasi dan Pembinaan (Bimtek, Sosialisasi, Konsultasi) Wawasan Kebangsaan dan Ketahanan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.05.2.01.0004",
+    "nama_sub_kegiatan": "Pembinaan Kerukunan Antar Suku dan Intra Suku, Umat Beragama, Ras, dan Golongan Lainnya Guna Mewujudkan Stabilitas Keamanan Lokal, Regional, dan Nasional"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.05.2.01.0008",
+    "nama_sub_kegiatan": "Pelaksanaan Tugas Forum Koordinasi Pimpinan di Kecamatan"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.06.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi Administrasi Tata Pemerintahan Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.06.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi Administrasi Tata Pemerintahan Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.06.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi Administrasi Tata Pemerintahan Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.06.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi Administrasi Tata Pemerintahan Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0004",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Dalam Kota",
+    "kode_sub_kegiatan": "7.01.06.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi Administrasi Tata Pemerintahan Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0005",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Luar Kota",
+    "kode_sub_kegiatan": "7.01.06.2.01.0002",
+    "nama_sub_kegiatan": "Fasilitasi Administrasi Tata Pemerintahan Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.06.2.01.0003",
+    "nama_sub_kegiatan": "Fasilitasi Pengelolaan Keuangan Desa dan Pendayagunaan Aset Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.06.2.01.0003",
+    "nama_sub_kegiatan": "Fasilitasi Pengelolaan Keuangan Desa dan Pendayagunaan Aset Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.06.2.01.0003",
+    "nama_sub_kegiatan": "Fasilitasi Pengelolaan Keuangan Desa dan Pendayagunaan Aset Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.06.2.01.0003",
+    "nama_sub_kegiatan": "Fasilitasi Pengelolaan Keuangan Desa dan Pendayagunaan Aset Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0004",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Dalam Kota",
+    "kode_sub_kegiatan": "7.01.06.2.01.0003",
+    "nama_sub_kegiatan": "Fasilitasi Pengelolaan Keuangan Desa dan Pendayagunaan Aset Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0005",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Luar Kota",
+    "kode_sub_kegiatan": "7.01.06.2.01.0003",
+    "nama_sub_kegiatan": "Fasilitasi Pengelolaan Keuangan Desa dan Pendayagunaan Aset Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0024",
+    "nama_rekening": "Belanja Alat/Bahan untuk Kegiatan Kantor- Alat Tulis Kantor",
+    "kode_sub_kegiatan": "7.01.06.2.01.0009",
+    "nama_sub_kegiatan": "Fasilitasi Sinkronisasi Perencanaan Pembangunan Daerah dengan Pembangunan Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.01.01.0052",
+    "nama_rekening": "Belanja Makanan dan Minuman Rapat",
+    "kode_sub_kegiatan": "7.01.06.2.01.0009",
+    "nama_sub_kegiatan": "Fasilitasi Sinkronisasi Perencanaan Pembangunan Daerah dengan Pembangunan Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.06.2.01.0009",
+    "nama_sub_kegiatan": "Fasilitasi Sinkronisasi Perencanaan Pembangunan Daerah dengan Pembangunan Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.02.12.0002",
+    "nama_rekening": "Belanja Sosialisasi",
+    "kode_sub_kegiatan": "7.01.06.2.01.0009",
+    "nama_sub_kegiatan": "Fasilitasi Sinkronisasi Perencanaan Pembangunan Daerah dengan Pembangunan Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0003",
+    "nama_rekening": "Belanja Perjalanan Dinas Dalam Kota",
+    "kode_sub_kegiatan": "7.01.06.2.01.0009",
+    "nama_sub_kegiatan": "Fasilitasi Sinkronisasi Perencanaan Pembangunan Daerah dengan Pembangunan Desa"
+  },
+  {
+    "kode_rekening": "5.1.02.04.01.0004",
+    "nama_rekening": "Belanja Perjalanan Dinas Paket Meeting Dalam Kota",
+    "kode_sub_kegiatan": "7.01.06.2.01.0009",
+    "nama_sub_kegiatan": "Fasilitasi Sinkronisasi Perencanaan Pembangunan Daerah dengan Pembangunan Desa"
+  }
+]
