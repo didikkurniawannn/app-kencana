@@ -55,7 +55,16 @@ class ContextBuilder
                 'sisa' => $totalPagu - $totalRealisasi,
             ];
 
-            // 3. Tren Realisasi Bulanan (Tahun Berjalan)
+            // 2b. Daftar Seluruh Program (Full Hierarchy Knowledge)
+            $snapshot['daftar_program'] = $programs->map(fn($p) => [
+                'k' => $p->kode_program,
+                'n' => $p->nama_program,
+                'p' => $p->total_pagu,
+                'r' => $p->total_realisasi,
+                's' => $p->sisa_pagu
+            ])->values()->toArray();
+
+            // 3. Tren Realisasi Bulanan
             $monthlyTrends = Realisasi::where('instansi_id', $tenant->id)
                 ->where('status', 'disetujui')
                 ->whereYear('tanggal_realisasi', $activeYear)
@@ -74,40 +83,37 @@ class ContextBuilder
                 }
             }
 
-            // 4. Top 10 Sub-Kegiatan Low Absorption (Pagu > 0)
-            // We'll look for those with high budget but low realization percentage
-            $snapshot['low_absorption_sub'] = SubKegiatan::where('instansi_id', $tenant->id)
-                ->whereHas('kegiatan.program', fn($q) => $q->where('tahun_anggaran', $activeYear))
+            // 4. Analisis Hirarki Rendah: Item RKA Strategis (Pagu > 10jt)
+            $snapshot['rincian_belanja_utama'] = \App\Models\DetailBelanja::where('instansi_id', $tenant->id)
+                ->where('pagu', '>', 10000000)
+                ->whereHas('rekening.subKegiatan.kegiatan.program', fn($q) => $q->where('tahun_anggaran', $activeYear))
+                ->orderByDesc('pagu')
+                ->take(25)
                 ->get()
-                ->map(function ($sk) {
-                    $pagu = $sk->total_pagu;
-                    $real = $sk->total_realisasi;
-                    return [
-                        'n' => $sk->nama_sub_kegiatan,
-                        'p' => $pagu,
-                        'r' => $real,
-                        'pct' => $pagu > 0 ? round(($real / $pagu) * 100, 2) : 0
-                    ];
-                })
-                ->filter(fn($item) => $item['p'] > 10000000) // Only relevant for budget > 10jt
-                ->sortBy('pct')
-                ->take(10)
-                ->values()
-                ->toArray();
+                ->map(fn($d) => [
+                    'item' => $d->nama_detail_belanja,
+                    'pagu' => $d->pagu,
+                    'real' => $d->realisasi_total,
+                    'sisa' => $d->sisa_pagu,
+                    'keg' => $d->rekening?->subKegiatan?->nama_sub_kegiatan
+                ])->values()->toArray();
 
-            // 5. Analisa per Kategori Belanja (Expense Type)
-            $snapshot['kategori_belanja'] = DB::table('realisasis')
-                ->join('expense_types', 'realisasis.expense_type_id', '=', 'expense_types.id')
-                ->where('realisasis.instansi_id', $tenant->id)
+            // 5. Agregasi per Kode Rekening (Buku Besar)
+            $snapshot['distribusi_rekening'] = DB::table('rekenings')
+                ->join('detail_belanjas', 'rekenings.id', '=', 'detail_belanjas.rekening_id')
+                ->join('realisasis', 'detail_belanjas.id', '=', 'realisasis.detail_belanja_id')
+                ->where('rekenings.instansi_id', $tenant->id)
                 ->where('realisasis.status', 'disetujui')
                 ->whereYear('realisasis.tanggal_realisasi', $activeYear)
-                ->select('expense_types.name', DB::raw('SUM(realisasis.jumlah) as total'))
-                ->groupBy('expense_types.name')
+                ->select('rekenings.kode_rekening', 'rekenings.nama_rekening', DB::raw('SUM(realisasis.jumlah) as total'))
+                ->groupBy('rekenings.kode_rekening', 'rekenings.nama_rekening')
+                ->orderByDesc('total')
+                ->take(15)
                 ->get()
-                ->mapWithKeys(fn($item) => [$item->name => (float) $item->total])
+                ->mapWithKeys(fn($item) => [$item->kode_rekening . ' (' . $item->nama_rekening . ')' => (float) $item->total])
                 ->toArray();
 
-            // 6. Status Dana Kas (SP2D Aktif)
+            // 6. Status Kas (SP2D)
             $kasMasuk = (float) Sp2d::where('instansi_id', $tenant->id)->where('status_verifikasi', 'diverifikasi')->sum('jumlah_sp2d');
             $kasSisa = (float) Sp2d::where('instansi_id', $tenant->id)->where('status_verifikasi', 'diverifikasi')->sum('sisa_jumlah');
             
@@ -115,8 +121,8 @@ class ContextBuilder
                 'total_sp2d' => $kasMasuk,
                 'sisa_kas' => $kasSisa,
                 'terpakai' => $kasMasuk - $kasSisa,
-                'rasio_kas' => $kasMasuk > 0 ? round((($kasMasuk - $kasSisa) / $kasMasuk) * 100, 2) . '%' : '0%',
             ];
+
 
             return $snapshot;
         });
