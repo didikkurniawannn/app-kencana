@@ -96,7 +96,7 @@ class Sp2d extends Model
     public function updateSisaJumlah(): void
     {
         $totalRealisasi = $this->realisasis()
-            ->where('status', 'approved')
+            ->where('status', 'disetujui')
             ->sum('jumlah');
 
         $this->update([

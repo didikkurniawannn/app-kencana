@@ -206,6 +206,6 @@ class BukuBku extends Page
 
     public static function canAccess(): bool
     {
-        return true;
+        return auth()->user()?->hasAnyRole(['super_admin', 'admin_instansi', 'bendahara', 'verifikator', 'pimpinan']) ?? false;
     }
 }

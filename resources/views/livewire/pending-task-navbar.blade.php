@@ -1,4 +1,4 @@
-<div>
+<div wire:poll.15s="updateCounts">
     @if($count > 0)
     <div class="pending-task-navbar-wrapper" x-data="{ open: false }" @click.away="open = false">
         <button

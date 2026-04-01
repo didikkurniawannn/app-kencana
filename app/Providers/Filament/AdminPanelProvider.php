@@ -43,6 +43,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->spa()
             ->databaseNotifications()
+            ->databaseNotificationsPolling('15s')
             ->login(\App\Filament\Pages\Auth\CustomLogin::class)
             ->userMenuItems([
                 'profile' => \Filament\Navigation\MenuItem::make()
@@ -585,6 +586,10 @@ class AdminPanelProvider extends PanelProvider
                         Developed by <strong style="color:#64748b;">DIDIK KURNIAWAN</strong> — KEC. CANGKUANG KAB. BANDUNG
                     </div>
                 '
+            )
+            ->renderHook(
+                \Filament\View\PanelsRenderHook::BODY_END,
+                fn(): string => \Illuminate\Support\Facades\Blade::render('@livewire(\'realtime-notification-alert\')')
             );
     }
 }

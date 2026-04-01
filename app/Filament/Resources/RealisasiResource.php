@@ -1004,8 +1004,7 @@ class RealisasiResource extends Resource
                                 'draft' => 'gray',
                                 'dikembalikan', 'ditolak' => 'danger',
                                 'diajukan' => 'warning',
-                                'verif_program', 'verif_keuangan' => 'info',
-                                'finalisasi' => 'primary',
+                                'verifikasi' => 'info',
                                 'disetujui' => 'success',
                                 default => 'gray',
                             })
