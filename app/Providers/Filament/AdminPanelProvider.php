@@ -577,6 +577,14 @@ class AdminPanelProvider extends PanelProvider
                         }
                     </style>
                 '
+            )
+            ->renderHook(
+                \Filament\View\PanelsRenderHook::FOOTER,
+                fn(): string => '
+                    <div style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">
+                        Developed by <strong style="color:#64748b;">DIDIK KURNIAWAN</strong> — KEC. CANGKUANG KAB. BANDUNG
+                    </div>
+                '
             );
     }
 }
