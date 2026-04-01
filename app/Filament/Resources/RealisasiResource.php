@@ -742,6 +742,12 @@ class RealisasiResource extends Resource
                                     ])
                             ])
                     ]),
+                Tables\Actions\Action::make('cetak_label')
+                    ->label('Cetak Label')
+                    ->icon('heroicon-o-printer')
+                    ->color('success')
+                    ->url(fn($record) => route('archive.label.realisasi.print', $record->id))
+                    ->openUrlInNewTab(),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make()
                     ->visible(fn($record) => in_array($record->status, ['draft', 'dikembalikan'])),

@@ -20,3 +20,15 @@ Route::get('/', function () {
 Route::get('/secure-download', [\App\Http\Controllers\SecureFileController::class, 'download'])
     ->middleware('auth')
     ->name('secure.download');
+
+Route::get('/archive/label/sp2d/{id}/print', [\App\Http\Controllers\ArchiveLabelController::class, 'printSp2dLabel'])
+    ->middleware('auth')
+    ->name('archive.label.sp2d.print');
+
+Route::get('/archive/label/realisasi/{id}/print', [\App\Http\Controllers\ArchiveLabelController::class, 'printRealisasiLabel'])
+    ->middleware('auth')
+    ->name('archive.label.realisasi.print');
+
+Route::get('/archive/register/print', [\App\Http\Controllers\ArchiveLabelController::class, 'printArchiveRegister'])
+    ->middleware('auth')
+    ->name('archive.register.print');

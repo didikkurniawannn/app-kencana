@@ -413,6 +413,12 @@ class Sp2dResource extends Resource
                                     ])
                             ])
                     ]),
+                Tables\Actions\Action::make('cetak_label')
+                    ->label('Cetak Label')
+                    ->icon('heroicon-o-printer')
+                    ->color('success')
+                    ->url(fn($record) => route('archive.label.sp2d.print', $record->id))
+                    ->openUrlInNewTab(),
                 Tables\Actions\Action::make('verifikasi')
                     ->label('Verifikasi')
                     ->icon('heroicon-o-check-circle')
