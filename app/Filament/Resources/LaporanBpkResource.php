@@ -54,6 +54,11 @@ class LaporanBpkResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('nomor_register')
+                    ->label('No. Register')
+                    ->searchable()
+                    ->sortable()
+                    ->color('primary'),
                 Tables\Columns\TextColumn::make('tanggal_realisasi')
                     ->date('d/m/Y')
                     ->sortable()

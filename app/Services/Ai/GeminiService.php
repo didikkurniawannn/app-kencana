@@ -285,4 +285,79 @@ class GeminiService
 
         return "⚠️ **Semua model AI sedang tidak tersedia.**\n\nSemua model telah mencapai batas kuota Free Tier untuk hari ini.\n\n**Model yang dicoba:** " . implode(', ', $triedModels) . "\n\n> 💡 **Solusi:**\n> 1. Tunggu beberapa menit — kuota per-model akan pulih secara bertahap\n> 2. Pertanyaan yang sudah pernah dijawab tetap bisa diakses dari cache\n> 3. Untuk penggunaan intensif, pertimbangkan upgrade ke Paid Tier di Google AI Studio";
     }
+
+    /**
+     * Analyze a document (image/PDF) to extract archive metadata.
+     * Returns structured JSON data.
+     */
+    public function analyzeArchiveDocument(string $filePath, string $mimeType): array
+    {
+        if (empty($this->apiKey)) {
+            throw new \Exception("Gemini API Key belum dikonfigurasi.");
+        }
+
+        $model = $this->getAvailableModel();
+        if (!$model) {
+            throw new \Exception("Layanan AI sedang sibuk (kuota habis).");
+        }
+
+        $fileContent = base64_encode(file_get_contents($filePath));
+
+        $prompt = "Analisis dokumen kearsipan pemerintah berikut dan berikan saran lokasi penyimpanan yang paling logis.
+        
+        Keluarkan hasil dalam format JSON murni (tanpa markdown blok) dengan kunci berikut:
+        {
+            \"ruang\": \"(Saran nama unit kerja/ruang berdasarkan isi dokumen)\",
+            \"box\": \"(Saran penomoran box/rak)\",
+            \"sampul\": \"(Judul singkat yang sangat deskriptif untuk berkas ini)\",
+            \"filing_cabinet\": \"(Saran nama lemari/kabinet)\",
+            \"kode_klasifikasi\": \"(Klasifikasi ANRI yang cocok, misal: KU.01, HK.02)\"
+        }
+
+        Catatan: Gunakan data di dalam dokumen (nama instansi, perihal, tanggal) untuk menentukan jawabannya.";
+
+        $requestBody = [
+            'contents' => [
+                [
+                    'parts' => [
+                        ['text' => $prompt],
+                        [
+                            'inlineData' => [
+                                'mimeType' => $mimeType,
+                                'data' => $fileContent
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            'generationConfig' => [
+                'temperature' => 0.2,
+                'response_mime_type' => 'application/json',
+            ]
+        ];
+
+        try {
+            $this->recordRequest();
+            $endpoint = "{$this->baseUrl}/{$model}:generateContent?key={$this->apiKey}";
+
+            $response = Http::timeout(60)->post($endpoint, $requestBody);
+
+            if ($response->successful()) {
+                $data = $response->json();
+                $text = $data['candidates'][0]['content']['parts'][0]['text'] ?? '{}';
+                
+                // Clean text from potential markdown blocks if AI ignored response_mime_type
+                $cleanJson = preg_replace('/```json\s*|\s*```/', '', $text);
+                
+                return json_decode($cleanJson, true) ?: [];
+            }
+
+            Log::error("Gemini Archive Analysis Error: " . $response->body());
+            return [];
+
+        } catch (\Exception $e) {
+            Log::error("Gemini Archive Analysis Exception: " . $e->getMessage());
+            return [];
+        }
+    }
 }

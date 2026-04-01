@@ -25,6 +25,7 @@ class Realisasi extends Model
         'user_id',
         'pegawai_id',
         'sp2d_id',
+        'nomor_register',
         'tanggal_realisasi',
         'kuefisien',
         'jumlah',
@@ -32,6 +33,14 @@ class Realisasi extends Model
         'bukti_file',
         'status',
         'instansi_id',
+        'arsip_ruang',
+        'arsip_box',
+        'arsip_rak_type',
+        'arsip_filing_cabinet',
+        'arsip_sampul',
+        'status_arsip',
+        'kode_klasifikasi',
+        'masa_retensi',
     ];
 
     public function instansi(): BelongsTo
@@ -49,6 +58,12 @@ class Realisasi extends Model
     protected static function boot()
     {
         parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->nomor_register)) {
+                $model->nomor_register = $model->generateNomorRegister();
+            }
+        });
 
         // Validate budget and SP2D balance before saving
         static::saving(function ($model) {
@@ -169,6 +184,29 @@ class Realisasi extends Model
     public function logs(): HasMany
     {
         return $this->hasMany(RealisasiLog::class)->orderBy('created_at', 'desc');
+    }
+
+    public function generateNomorRegister(): string
+    {
+        $year = \Carbon\Carbon::parse($this->tanggal_realisasi ?? now())->year;
+        $instansi = $this->instansi ?: auth()->user()?->instansi;
+        $kodeInstansi = $instansi ? $instansi->kode : 'KENCANA';
+        
+        $lastRecord = static::where('instansi_id', $this->instansi_id ?? ($instansi->id ?? null))
+            ->whereYear('created_at', now()->year)
+            ->whereNotNull('nomor_register')
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $lastNumber = 0;
+        if ($lastRecord && preg_match('/(\d+)$/', $lastRecord->nomor_register, $matches)) {
+            $lastNumber = (int)$matches[1];
+        }
+
+        $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
+        
+        // Format: REA/[KODE-INSTANSI]/[YEAR]/[SEQ]
+        return "REA/{$kodeInstansi}/{$year}/{$newNumber}";
     }
 
     // Get detail value by field name

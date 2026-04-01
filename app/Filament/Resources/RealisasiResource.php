@@ -320,10 +320,134 @@ class RealisasiResource extends Resource
 
                     Forms\Components\Textarea::make('keterangan')
                         ->label('Keterangan')
-                        ->rows(2),
+                        ->rows(1),
+
+                    Forms\Components\Section::make('Informasi Penyimpanan')
+                        ->icon('heroicon-o-archive-box')
+                        ->headerActions([
+                                Forms\Components\Actions\Action::make('scan_ai')
+                                    ->label('Scan Dokumen dengan AI')
+                                    ->icon('heroicon-o-sparkles')
+                                    ->color('info')
+                                    ->action(function (callable $get, callable $set) {
+                                        $files = $get('bukti_file');
+                                        if (empty($files)) {
+                                            Notification::make()
+                                                ->title('Peringatan')
+                                                ->body('Harap unggah berkas kuitansi/dokumen terlebih dahulu pada bagian di bawah.')
+                                                ->warning()
+                                                ->send();
+                                            return;
+                                        }
+
+                                        $file = is_array($files) ? $files[0] : $files;
+                                        $filePath = storage_path('app/public/' . $file);
+                                        
+                                        if (!file_exists($filePath)) {
+                                            Notification::make()->title('Berkas tidak ditemukan')->danger()->send();
+                                            return;
+                                        }
+
+                                        Notification::make()->title('Sedang Menganalisis...')->info()->send();
+
+                                        try {
+                                            $gemini = new \App\Services\Ai\GeminiService();
+                                            $mimeType = mime_content_type($filePath);
+                                            $metadata = $gemini->analyzeArchiveDocument($filePath, $mimeType);
+
+                                            if (!empty($metadata)) {
+                                                $set('arsip_ruang', $metadata['ruang'] ?? null);
+                                                $set('arsip_box', $metadata['box'] ?? null);
+                                                $set('arsip_sampul', $metadata['sampul'] ?? null);
+                                                $set('arsip_filing_cabinet', $metadata['filing_cabinet'] ?? null);
+                                                
+                                                Notification::make()
+                                                    ->title('Analisis AI Berhasil')
+                                                    ->body('Saran lokasi penyimpanan telah diisi secara otomatis.')
+                                                    ->success()
+                                                    ->send();
+                                            }
+                                        } catch (\Exception $e) {
+                                            Notification::make()->title('Gangguan AI')->body($e->getMessage())->danger()->send();
+                                        }
+                                    }),
+                        ])
+                        ->schema([
+                            Forms\Components\Grid::make(2)
+                                ->schema([
+                                    Forms\Components\Select::make('arsip_ruang')
+                                        ->label('Ruang')
+                                        ->options(fn () => \App\Models\Realisasi::whereNotNull('arsip_ruang')->distinct()->pluck('arsip_ruang', 'arsip_ruang'))
+                                        ->searchable()
+                                        ->placeholder('Pilih atau ketik baru...')
+                                        ->createOptionForm([
+                                            Forms\Components\TextInput::make('arsip_ruang')->required(),
+                                        ])
+                                        ->createOptionUsing(fn (array $data) => $data['arsip_ruang']),
+
+                                    Forms\Components\Select::make('arsip_box')
+                                        ->label('Box')
+                                        ->options(fn () => \App\Models\Realisasi::whereNotNull('arsip_box')->distinct()->pluck('arsip_box', 'arsip_box'))
+                                        ->searchable()
+                                        ->placeholder('Pilih atau ketik baru...')
+                                        ->createOptionForm([
+                                            Forms\Components\TextInput::make('arsip_box')->required(),
+                                        ])
+                                        ->createOptionUsing(fn (array $data) => $data['arsip_box']),
+
+                                    Forms\Components\Radio::make('arsip_rak_type')
+                                        ->label('Rak/Roll o pact')
+                                        ->options([
+                                            'Rak' => 'Rak',
+                                            'Roll o pact' => 'Roll o pact',
+                                        ])
+                                        ->default('Rak')
+                                        ->inline()
+                                        ->inlineLabel(false),
+                                    Forms\Components\Select::make('arsip_sampul')
+                                        ->label('Sampul')
+                                        ->options(fn () => \App\Models\Realisasi::whereNotNull('arsip_sampul')->distinct()->pluck('arsip_sampul', 'arsip_sampul'))
+                                        ->searchable()
+                                        ->placeholder('Pilih atau ketik baru...')
+                                        ->createOptionForm([
+                                            Forms\Components\TextInput::make('arsip_sampul')->required(),
+                                        ])
+                                        ->createOptionUsing(fn (array $data) => $data['arsip_sampul']),
+
+                                    Forms\Components\Select::make('arsip_filing_cabinet')
+                                        ->label('Filing Cabinet')
+                                        ->options(fn () => \App\Models\Realisasi::whereNotNull('arsip_filing_cabinet')->distinct()->pluck('arsip_filing_cabinet', 'arsip_filing_cabinet'))
+                                        ->searchable()
+                                        ->placeholder('Pilih atau ketik baru...')
+                                        ->createOptionForm([
+                                            Forms\Components\TextInput::make('arsip_filing_cabinet')->required(),
+                                        ])
+                                        ->createOptionUsing(fn (array $data) => $data['arsip_filing_cabinet']),
+                                ]),
+                            
+                            Forms\Components\Grid::make(3)
+                                ->schema([
+                                    Forms\Components\TextInput::make('nomor_register')
+                                        ->label('No. Register')
+                                        ->disabled()
+                                        ->dehydrated()
+                                        ->placeholder('Otomatis'),
+                                    Forms\Components\Select::make('status_arsip')
+                                        ->options([
+                                            'proses' => 'Sedang Diproses',
+                                            'lengkap' => 'Dokumen Lengkap',
+                                            'diarsipkan' => 'Sudah Diarsipkan',
+                                        ])
+                                        ->default('proses')
+                                        ->label('Status'),
+                                    Forms\Components\TextInput::make('kode_klasifikasi')
+                                        ->label('Klasifikasi')
+                                        ->default('KU.01'),
+                                ]),
+                        ]),
 
                     Forms\Components\FileUpload::make('bukti_file')
-                        ->label('Upload Bukti (Nota/Kwitansi/Dokumen)')
+                        ->label('PILIH FILE')
                         ->disk('public')
                         ->directory(function (callable $get) {
                             $detailBelanjaId = $get('detail_belanja_id');
@@ -496,6 +620,12 @@ class RealisasiResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('nomor_register')
+                    ->label('No. Register')
+                    ->searchable()
+                    ->sortable()
+                    ->copyable()
+                    ->color('primary'),
                 Tables\Columns\TextColumn::make('tanggal_realisasi')
                     ->label('Tanggal')
                     ->sortable()

@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Model;
@@ -112,42 +113,151 @@ class Sp2dResource extends Resource
                         Forms\Components\Textarea::make('keterangan')
                             ->maxLength(65535)
                             ->columnSpanFull(),
-                        Forms\Components\Section::make('Pelacakan Arsip')
-                            ->schema([
-                                Forms\Components\TextInput::make('lokasi_arsip_fisik')
-                                    ->label('Lokasi Arsip Fisik')
-                                    ->placeholder('Gudang A, Kotak 12, dll'),
-                                Forms\Components\Select::make('status_arsip')
-                                    ->options([
-                                        'proses' => 'Sedang Diproses',
-                                        'lengkap' => 'Dokumen Lengkap',
-                                        'diarsipkan' => 'Sudah Diarsipkan',
-                                    ])
-                                    ->default('proses')
-                                    ->label('Status Pengarsipan'),
-                                Forms\Components\TextInput::make('kode_klasifikasi')
-                                    ->label('Kode Klasifikasi ANRI')
-                                    ->default('KU.01')
-                                    ->placeholder('Misal: KU.01'),
-                                Forms\Components\TextInput::make('masa_retensi')
-                                    ->label('Masa Retensi (Tahun)')
-                                    ->numeric()
-                                    ->default(10)
-                                    ->suffix('Tahun'),
-                                Forms\Components\Select::make('tingkat_perkembangan')
-                                    ->label('Tingkat Perkembangan')
-                                    ->options([
-                                        'Asli' => 'Asli',
-                                        'Tembusan' => 'Tembusan',
-                                        'Fotokopi' => 'Fotokopi',
-                                    ])
-                                    ->default('Asli'),
-                            ])->columns(2),
+                        Forms\Components\Section::make('Informasi Penyimpanan')
+                            ->icon('heroicon-o-archive-box')
+                            ->headerActions([
+                                Forms\Components\Actions\Action::make('scan_ai')
+                                    ->label('Scan Dokumen dengan AI')
+                                    ->icon('heroicon-o-sparkles')
+                                    ->color('info')
+                                    ->action(function (callable $get, callable $set) {
+                                        $files = $get('bukti_file');
+                                        if (empty($files)) {
+                                            Notification::make()
+                                                ->title('Peringatan')
+                                                ->body('Harap unggah berkas (PDF/Gambar) terlebih dahulu pada bagian Berkas File di bawah.')
+                                                ->warning()
+                                                ->send();
+                                            return;
+                                        }
 
-                        Forms\Components\Section::make('Dokumen Pendukung')
+                                        $file = is_array($files) ? $files[0] : $files;
+                                        $filePath = storage_path('app/public/' . $file);
+                                        
+                                        if (!file_exists($filePath)) {
+                                            Notification::make()->title('Berkas tidak ditemukan')->danger()->send();
+                                            return;
+                                        }
+
+                                        Notification::make()->title('Sedang Menganalisis...')->info()->send();
+
+                                        try {
+                                            $gemini = new \App\Services\Ai\GeminiService();
+                                            $mimeType = mime_content_type($filePath);
+                                            $metadata = $gemini->analyzeArchiveDocument($filePath, $mimeType);
+
+                                            if (!empty($metadata)) {
+                                                $set('arsip_ruang', $metadata['ruang'] ?? null);
+                                                $set('arsip_box', $metadata['box'] ?? null);
+                                                $set('arsip_sampul', $metadata['sampul'] ?? null);
+                                                $set('arsip_filing_cabinet', $metadata['filing_cabinet'] ?? null);
+                                                
+                                                Notification::make()
+                                                    ->title('Analisis AI Berhasil')
+                                                    ->body('Saran lokasi penyimpanan telah diisi secara otomatis.')
+                                                    ->success()
+                                                    ->send();
+                                            } else {
+                                                Notification::make()
+                                                    ->title('Analisis Selesai')
+                                                    ->body('AI tidak menemukan data kearsipan yang spesifik pada dokumen ini.')
+                                                    ->info()
+                                                    ->send();
+                                            }
+                                        } catch (\Exception $e) {
+                                            Notification::make()
+                                                ->title('Gangguan AI')
+                                                ->body($e->getMessage())
+                                                ->danger()
+                                                ->send();
+                                        }
+                                    }),
+                            ])
+                            ->schema([
+                                Forms\Components\Grid::make(2)
+                                    ->schema([
+                                        Forms\Components\Select::make('arsip_ruang')
+                                            ->label('Ruang')
+                                            ->options(fn () => \App\Models\Sp2d::whereNotNull('arsip_ruang')->distinct()->pluck('arsip_ruang', 'arsip_ruang'))
+                                            ->searchable()
+                                            ->placeholder('Pilih atau ketik baru...')
+                                            ->createOptionForm([
+                                                Forms\Components\TextInput::make('arsip_ruang')
+                                                    ->label('Nama Ruang Baru')
+                                                    ->required(),
+                                            ])
+                                            ->createOptionUsing(fn (array $data) => $data['arsip_ruang']),
+
+                                        Forms\Components\Select::make('arsip_box')
+                                            ->label('Box')
+                                            ->options(fn () => \App\Models\Sp2d::whereNotNull('arsip_box')->distinct()->pluck('arsip_box', 'arsip_box'))
+                                            ->searchable()
+                                            ->placeholder('Pilih atau ketik baru...')
+                                            ->createOptionForm([
+                                                Forms\Components\TextInput::make('arsip_box')
+                                                    ->label('Nama Box Baru')
+                                                    ->required(),
+                                            ])
+                                            ->createOptionUsing(fn (array $data) => $data['arsip_box']),
+
+                                        Forms\Components\Radio::make('arsip_rak_type')
+                                            ->label('Rak/Roll o pact')
+                                            ->options([
+                                                'Rak' => 'Rak',
+                                                'Roll o pact' => 'Roll o pact',
+                                            ])
+                                            ->default('Rak')
+                                            ->inline()
+                                            ->inlineLabel(false),
+
+                                        Forms\Components\Select::make('arsip_sampul')
+                                            ->label('Sampul')
+                                            ->options(fn () => \App\Models\Sp2d::whereNotNull('arsip_sampul')->distinct()->pluck('arsip_sampul', 'arsip_sampul'))
+                                            ->searchable()
+                                            ->placeholder('Pilih atau ketik baru...')
+                                            ->createOptionForm([
+                                                Forms\Components\TextInput::make('arsip_sampul')
+                                                    ->label('Label Sampul Baru')
+                                                    ->required(),
+                                            ])
+                                            ->createOptionUsing(fn (array $data) => $data['arsip_sampul']),
+
+                                        Forms\Components\Select::make('arsip_filing_cabinet')
+                                            ->label('Filing Cabinet')
+                                            ->options(fn () => \App\Models\Sp2d::whereNotNull('arsip_filing_cabinet')->distinct()->pluck('arsip_filing_cabinet', 'arsip_filing_cabinet'))
+                                            ->searchable()
+                                            ->placeholder('Pilih atau ketik baru...')
+                                            ->createOptionForm([
+                                                Forms\Components\TextInput::make('arsip_filing_cabinet')
+                                                    ->label('Nama Kabinet Baru')
+                                                    ->required(),
+                                            ])
+                                            ->createOptionUsing(fn (array $data) => $data['arsip_filing_cabinet']),
+                                    ]),
+                                
+                                Forms\Components\Grid::make(2)
+                                    ->schema([
+                                        Forms\Components\TextInput::make('nomor_register')
+                                            ->label('Nomor Register Arsip')
+                                            ->disabled()
+                                            ->dehydrated()
+                                            ->placeholder('Otomatis saat disimpan'),
+                                        Forms\Components\Select::make('status_arsip')
+                                            ->options([
+                                                'proses' => 'Sedang Diproses',
+                                                'lengkap' => 'Dokumen Lengkap',
+                                                'diarsipkan' => 'Sudah Diarsipkan',
+                                            ])
+                                            ->default('proses')
+                                            ->label('Status Pengarsipan'),
+                                    ]),
+                            ]),
+
+                        Forms\Components\Section::make('Berkas File')
+                            ->icon('heroicon-o-document-plus')
                             ->schema([
                                 Forms\Components\FileUpload::make('bukti_file')
-                                    ->label('Bukti File (SPM, SPP, Sumber Dana)')
+                                    ->label('File Arsip')
                                     ->disk('public')
                                     ->directory(fn($get) => 'sp2d-documents/' . \App\Helpers\ActiveYear::get() . '/' . \Illuminate\Support\Str::slug($get('nomor_sp2d') ?? 'unsaved'))
                                     ->acceptedFileTypes(['application/pdf', 'image/*'])
@@ -182,6 +292,13 @@ class Sp2dResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
+                Tables\Columns\TextColumn::make('nomor_register')
+                    ->label('No. Register')
+                    ->searchable()
+                    ->sortable()
+                    ->copyable()
+                    ->color('primary')
+                    ->weight('bold'),
                 Tables\Columns\TextColumn::make('nomor_sp2d')
                     ->searchable()
                     ->sortable()

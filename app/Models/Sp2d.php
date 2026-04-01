@@ -18,6 +18,7 @@ class Sp2d extends Model
 
     protected $fillable = [
         'nomor_sp2d',
+        'nomor_register',
         'tanggal_sp2d',
         'jumlah_sp2d',
         'sumber_dana',
@@ -27,6 +28,11 @@ class Sp2d extends Model
         'status_verifikasi',
         'keterangan',
         'lokasi_arsip_fisik',
+        'arsip_ruang',
+        'arsip_box',
+        'arsip_rak_type',
+        'arsip_filing_cabinet',
+        'arsip_sampul',
         'status_arsip',
         'kode_klasifikasi',
         'masa_retensi',
@@ -35,6 +41,40 @@ class Sp2d extends Model
         'instansi_id',
         'bukti_file',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->nomor_register)) {
+                $model->nomor_register = $model->generateNomorRegister();
+            }
+        });
+    }
+
+    public function generateNomorRegister(): string
+    {
+        $year = \Carbon\Carbon::parse($this->tanggal_sp2d ?? now())->year;
+        $instansi = $this->instansi;
+        $kodeInstansi = $instansi ? $instansi->kode : 'KENCANA';
+        
+        $lastRecord = static::where('instansi_id', $this->instansi_id)
+            ->whereYear('created_at', now()->year)
+            ->whereNotNull('nomor_register')
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $lastNumber = 0;
+        if ($lastRecord && preg_match('/(\d+)$/', $lastRecord->nomor_register, $matches)) {
+            $lastNumber = (int)$matches[1];
+        }
+
+        $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
+        
+        // Format: [KODE-INSTANSI]/[YEAR]/[SEQ]
+        return "{$kodeInstansi}/{$year}/{$newNumber}";
+    }
 
     public function instansi(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
