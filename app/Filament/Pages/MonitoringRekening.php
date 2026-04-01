@@ -36,51 +36,66 @@ class MonitoringRekening extends Page implements HasTable
             ->select('detail_belanja_id', \Illuminate\Support\Facades\DB::raw('SUM(kuefisien) as sum_kuefisien'), \Illuminate\Support\Facades\DB::raw('SUM(jumlah) as sum_realisasi'))
             ->groupBy('detail_belanja_id');
 
+        // Subquery untuk menghitung kolom virtual dan menyiapkan data mentah
+        $baseQuery = \App\Models\Rekening::query()
+            ->join('detail_belanjas', 'rekenings.id', '=', 'detail_belanjas.rekening_id')
+            ->join('sub_kegiatans', 'rekenings.sub_kegiatan_id', '=', 'sub_kegiatans.id')
+            ->leftJoinSub($realisasiSubquery, 'realisasi_agg', 'detail_belanjas.id', '=', 'realisasi_agg.detail_belanja_id')
+            ->when($tenantId, fn($q) => $q->where('rekenings.instansi_id', $tenantId))
+            ->whereHas('subKegiatan.kegiatan.program', function ($q) use ($activeYear, $tenantId) {
+                $q->where('tahun_anggaran', $activeYear);
+                if ($tenantId) {
+                    $q->where('programs.instansi_id', $tenantId);
+                }
+            })
+            ->select(
+                'rekenings.id as original_id',
+                'rekenings.kode_rekening as raw_kode',
+                'rekenings.nama_rekening as raw_nama',
+                'rekenings.sub_kegiatan_id as raw_sub_kegiatan_id',
+                'sub_kegiatans.nama_sub_kegiatan as raw_sub_nama',
+                'detail_belanjas.nama_detail_belanja as raw_detail_nama',
+                'detail_belanjas.pagu',
+                'detail_belanjas.kuefisien_murni',
+                'realisasi_agg.sum_kuefisien as riil_koef',
+                'realisasi_agg.sum_realisasi as riil_rupiah',
+                \Illuminate\Support\Facades\DB::raw("
+                    CASE 
+                        WHEN LOWER(detail_belanjas.nama_detail_belanja) LIKE '%pembulatan%' THEN '9.9.99.99.99.9999' 
+                        WHEN LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%gaji dan tunjangan%' 
+                          OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa penunjang urusan pemerintahan daerah%'
+                          OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa pelayanan umum kantor%'
+                        THEN sub_kegiatans.kode_sub_kegiatan
+                        ELSE rekenings.kode_rekening 
+                    END as v_kode
+                "),
+                \Illuminate\Support\Facades\DB::raw("
+                    CASE 
+                        WHEN LOWER(detail_belanjas.nama_detail_belanja) LIKE '%pembulatan%' THEN 'Rekening Khusus Pembulatan' 
+                        WHEN LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%gaji dan tunjangan%' 
+                          OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa penunjang urusan pemerintahan daerah%'
+                          OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa pelayanan umum kantor%'
+                        THEN sub_kegiatans.nama_sub_kegiatan
+                        WHEN rekenings.nama_rekening LIKE '%Auto-created%' THEN sub_kegiatans.nama_sub_kegiatan
+                        ELSE rekenings.nama_rekening 
+                    END as v_nama
+                ")
+            );
+
         return $table
             ->query(
-                Rekening::query()
-                    ->when($tenantId, fn($q) => $q->where('rekenings.instansi_id', $tenantId))
-                    ->whereHas('subKegiatan.kegiatan.program', function ($q) use ($activeYear, $tenantId) {
-                        $q->where('tahun_anggaran', $activeYear);
-                        if ($tenantId) {
-                            $q->where('programs.instansi_id', $tenantId);
-                        }
-                    })
-                    ->join('detail_belanjas', 'rekenings.id', '=', 'detail_belanjas.rekening_id')
-                    ->join('sub_kegiatans', 'rekenings.sub_kegiatan_id', '=', 'sub_kegiatans.id')
-                    ->leftJoinSub($realisasiSubquery, 'realisasi_agg', 'detail_belanjas.id', '=', 'realisasi_agg.detail_belanja_id')
+                \App\Models\Rekening::query()
+                    ->fromSub($baseQuery, 'v_table')
                     ->select(
-                        \Illuminate\Support\Facades\DB::raw("
-                            CASE 
-                                WHEN LOWER(detail_belanjas.nama_detail_belanja) LIKE '%pembulatan%' THEN '9.9.99.99.99.9999' 
-                                WHEN LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%gaji dan tunjangan%' 
-                                  OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa penunjang urusan pemerintahan daerah%'
-                                  OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa pelayanan umum kantor%'
-                                THEN sub_kegiatans.kode_sub_kegiatan
-                                ELSE rekenings.kode_rekening 
-                            END as kode_rekening
-                        "),
-                        \Illuminate\Support\Facades\DB::raw("
-                            CASE 
-                                WHEN LOWER(detail_belanjas.nama_detail_belanja) LIKE '%pembulatan%' THEN 'Rekening Khusus Pembulatan' 
-                                WHEN LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%gaji dan tunjangan%' 
-                                  OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa penunjang urusan pemerintahan daerah%'
-                                  OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa pelayanan umum kantor%'
-                                THEN sub_kegiatans.nama_sub_kegiatan
-                                WHEN rekenings.nama_rekening LIKE '%Auto-created%' THEN sub_kegiatans.nama_sub_kegiatan
-                                ELSE rekenings.nama_rekening 
-                            END as nama_rekening
-                        "),
-                        \Illuminate\Support\Facades\DB::raw('MIN(rekenings.id) as id'),
-                        \Illuminate\Support\Facades\DB::raw('SUM(detail_belanjas.kuefisien_murni) as total_pagu_kuefisien'),
-                        \Illuminate\Support\Facades\DB::raw('SUM(detail_belanjas.pagu) as total_pagu_rupiah'),
-                        \Illuminate\Support\Facades\DB::raw('SUM(realisasi_agg.sum_kuefisien) as total_riil_kuefisien'),
-                        \Illuminate\Support\Facades\DB::raw('SUM(realisasi_agg.sum_realisasi) as total_riil_rupiah')
+                        \Illuminate\Support\Facades\DB::raw('MIN(original_id) as id'),
+                        'v_kode as kode_rekening',
+                        'v_nama as nama_rekening',
+                        \Illuminate\Support\Facades\DB::raw('SUM(pagu) as total_pagu_rupiah'),
+                        \Illuminate\Support\Facades\DB::raw('SUM(kuefisien_murni) as total_pagu_kuefisien'),
+                        \Illuminate\Support\Facades\DB::raw('SUM(riil_koef) as total_riil_kuefisien'),
+                        \Illuminate\Support\Facades\DB::raw('SUM(riil_rupiah) as total_riil_rupiah')
                     )
-                    ->groupBy(
-                        \Illuminate\Support\Facades\DB::raw("CASE WHEN LOWER(detail_belanjas.nama_detail_belanja) LIKE '%pembulatan%' THEN '9.9.99.99.99.9999' WHEN LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%gaji dan tunjangan%' OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa penunjang urusan pemerintahan daerah%' OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa pelayanan umum kantor%' THEN sub_kegiatans.kode_sub_kegiatan ELSE rekenings.kode_rekening END"),
-                        \Illuminate\Support\Facades\DB::raw("CASE WHEN LOWER(detail_belanjas.nama_detail_belanja) LIKE '%pembulatan%' THEN 'Rekening Khusus Pembulatan' WHEN LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%gaji dan tunjangan%' OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa penunjang urusan pemerintahan daerah%' OR LOWER(sub_kegiatans.nama_sub_kegiatan) LIKE '%jasa pelayanan umum kantor%' THEN sub_kegiatans.nama_sub_kegiatan WHEN rekenings.nama_rekening LIKE '%Auto-created%' THEN sub_kegiatans.nama_sub_kegiatan ELSE rekenings.nama_rekening END")
-                    )
+                    ->groupBy('v_kode', 'v_nama')
             )
             ->columns([
                 Tables\Columns\TextColumn::make('kode_rekening')
@@ -154,64 +169,64 @@ class MonitoringRekening extends Page implements HasTable
                         return $query->where(function ($q) use ($data) {
                             switch ($data['value']) {
                                 case 'gaji':
-                                    $q->where('rekenings.kode_rekening', 'LIKE', '5.1.01%')
-                                      ->orWhere('sub_kegiatans.nama_sub_kegiatan', 'LIKE', '%gaji dan tunjangan%');
+                                    $q->where('raw_kode', 'LIKE', '5.1.01%')
+                                      ->orWhere('raw_sub_nama', 'LIKE', '%gaji dan tunjangan%');
                                     break;
                                 case 'perjalanan':
-                                    $q->where('rekenings.kode_rekening', 'LIKE', '5.1.02.04%')
-                                      ->orWhere('rekenings.nama_rekening', 'LIKE', '%perjalanan dinas%');
+                                    $q->where('raw_kode', 'LIKE', '5.1.02.04%')
+                                      ->orWhere('raw_nama', 'LIKE', '%perjalanan dinas%');
                                     break;
                                 case 'makan_minum':
-                                    $q->where('rekenings.nama_rekening', 'LIKE', '%makan%')
-                                      ->orWhere('rekenings.nama_rekening', 'LIKE', '%minum%')
-                                      ->orWhere('detail_belanjas.nama_detail_belanja', 'LIKE', '%makan%')
-                                      ->orWhere('detail_belanjas.nama_detail_belanja', 'LIKE', '%minum%');
+                                    $q->where('raw_nama', 'LIKE', '%makan%')
+                                      ->orWhere('raw_nama', 'LIKE', '%minum%')
+                                      ->orWhere('raw_detail_nama', 'LIKE', '%makan%')
+                                      ->orWhere('raw_detail_nama', 'LIKE', '%minum%');
                                     break;
                                 case 'pemeliharaan':
-                                    $q->where('rekenings.kode_rekening', 'LIKE', '5.1.02.03%')
-                                      ->orWhere('rekenings.nama_rekening', 'LIKE', '%pemeliharaan%');
+                                    $q->where('raw_kode', 'LIKE', '5.1.02.03%')
+                                      ->orWhere('raw_nama', 'LIKE', '%pemeliharaan%');
                                     break;
                                 case 'tagihan':
                                     $q->where(function($sub) {
-                                        $sub->where('rekenings.nama_rekening', 'LIKE', '%listrik%')
-                                            ->orWhere('rekenings.nama_rekening', 'LIKE', '%air%')
-                                            ->orWhere('rekenings.nama_rekening', 'LIKE', '%langganan%')
-                                            ->orWhere('detail_belanjas.nama_detail_belanja', 'LIKE', '%listrik%')
-                                            ->orWhere('detail_belanjas.nama_detail_belanja', 'LIKE', '%air%')
-                                            ->orWhere('detail_belanjas.nama_detail_belanja', 'LIKE', '%langganan%');
+                                        $sub->where('raw_nama', 'LIKE', '%listrik%')
+                                            ->orWhere('raw_nama', 'LIKE', '%air%')
+                                            ->orWhere('raw_nama', 'LIKE', '%langganan%')
+                                            ->orWhere('raw_detail_nama', 'LIKE', '%listrik%')
+                                            ->orWhere('raw_detail_nama', 'LIKE', '%air%')
+                                            ->orWhere('raw_detail_nama', 'LIKE', '%langganan%');
                                     });
                                     break;
                                 case 'alat_bahan':
                                     $q->where(function($sub) {
-                                        $sub->where('rekenings.kode_rekening', 'LIKE', '5.1%')
+                                        $sub->where('raw_kode', 'LIKE', '5.1%')
                                             ->where(function($inner) {
-                                                $inner->where('rekenings.nama_rekening', 'LIKE', '%alat%')
-                                                      ->orWhere('rekenings.nama_rekening', 'LIKE', '%bahan%')
-                                                      ->orWhere('detail_belanjas.nama_detail_belanja', 'LIKE', '%alat%')
-                                                      ->orWhere('detail_belanjas.nama_detail_belanja', 'LIKE', '%bahan%');
+                                                $inner->where('raw_nama', 'LIKE', '%alat%')
+                                                      ->orWhere('raw_nama', 'LIKE', '%bahan%')
+                                                      ->orWhere('raw_detail_nama', 'LIKE', '%alat%')
+                                                      ->orWhere('raw_detail_nama', 'LIKE', '%bahan%');
                                             });
                                     });
                                     break;
                                 case 'alat':
-                                    $q->where('rekenings.kode_rekening', 'LIKE', '5.2%')
-                                      ->orWhere('rekenings.nama_rekening', 'LIKE', '%mesin%');
+                                    $q->where('raw_kode', 'LIKE', '5.2%')
+                                      ->orWhere('raw_nama', 'LIKE', '%mesin%');
                                     break;
                                 case 'lainnya':
-                                    $q->where('rekenings.kode_rekening', 'NOT LIKE', '5.1.01%') // Bukan Gaji
-                                      ->where('rekenings.kode_rekening', 'NOT LIKE', '5.1.02.04%') // Bukan Perjalanan
-                                      ->where('rekenings.kode_rekening', 'NOT LIKE', '5.1.02.03%') // Bukan Pemeliharaan
-                                      ->where('rekenings.kode_rekening', 'NOT LIKE', '5.2%') // Bukan Aset Modal
-                                      ->where('sub_kegiatans.nama_sub_kegiatan', 'NOT LIKE', '%gaji dan tunjangan%')
-                                      ->where('rekenings.nama_rekening', 'NOT LIKE', '%makan%')
-                                      ->where('rekenings.nama_rekening', 'NOT LIKE', '%minum%')
-                                      ->where('rekenings.nama_rekening', 'NOT LIKE', '%alat%')
-                                      ->where('rekenings.nama_rekening', 'NOT LIKE', '%bahan%')
-                                      ->where('rekenings.nama_rekening', 'NOT LIKE', '%listrik%')
-                                      ->where('rekenings.nama_rekening', 'NOT LIKE', '%air%')
-                                      ->where('rekenings.nama_rekening', 'NOT LIKE', '%langganan%')
-                                      ->where('detail_belanjas.nama_detail_belanja', 'NOT LIKE', '%listrik%')
-                                      ->where('detail_belanjas.nama_detail_belanja', 'NOT LIKE', '%air%')
-                                      ->where('detail_belanjas.nama_detail_belanja', 'NOT LIKE', '%langganan%');
+                                    $q->where('raw_kode', 'NOT LIKE', '5.1.01%') // Bukan Gaji
+                                      ->where('raw_kode', 'NOT LIKE', '5.1.02.04%') // Bukan Perjalanan
+                                      ->where('raw_kode', 'NOT LIKE', '5.1.02.03%') // Bukan Pemeliharaan
+                                      ->where('raw_kode', 'NOT LIKE', '5.2%') // Bukan Aset Modal
+                                      ->where('raw_sub_nama', 'NOT LIKE', '%gaji dan tunjangan%')
+                                      ->where('raw_nama', 'NOT LIKE', '%makan%')
+                                      ->where('raw_nama', 'NOT LIKE', '%minum%')
+                                      ->where('raw_nama', 'NOT LIKE', '%alat%')
+                                      ->where('raw_nama', 'NOT LIKE', '%bahan%')
+                                      ->where('raw_nama', 'NOT LIKE', '%listrik%')
+                                      ->where('raw_nama', 'NOT LIKE', '%air%')
+                                      ->where('raw_nama', 'NOT LIKE', '%langganan%')
+                                      ->where('raw_detail_nama', 'NOT LIKE', '%listrik%')
+                                      ->where('raw_detail_nama', 'NOT LIKE', '%air%')
+                                      ->where('raw_detail_nama', 'NOT LIKE', '%langganan%');
                                     break;
                             }
                         });
@@ -230,7 +245,7 @@ class MonitoringRekening extends Page implements HasTable
                     })
                     ->query(function (Builder $query, array $data): Builder {
                         if (!empty($data['value'])) {
-                            $query->where('rekenings.sub_kegiatan_id', $data['value']);
+                            $query->where('raw_sub_kegiatan_id', $data['value']);
                         }
                         return $query;
                     })
