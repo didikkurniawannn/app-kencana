@@ -11,6 +11,10 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Notifications\Notification;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\Section as InfolistSection;
+use Filament\Infolists\Components\Grid as InfolistGrid;
+use Filament\Infolists\Infolist;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Model;
@@ -287,18 +291,16 @@ class Sp2dResource extends Resource
                         default => 'gray',
                     })
                     ->label('Sumber'),
+                Tables\Columns\TextColumn::make('instansi.nama')
+                    ->label('Instansi')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('nama_sumber_dana')
                     ->label('Nama Sumber Dana')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
-                Tables\Columns\TextColumn::make('nomor_register')
-                    ->label('No. Register')
-                    ->searchable()
-                    ->sortable()
-                    ->copyable()
-                    ->color('primary')
-                    ->weight('bold'),
                 Tables\Columns\TextColumn::make('nomor_sp2d')
                     ->searchable()
                     ->sortable()
@@ -341,9 +343,6 @@ class Sp2dResource extends Resource
                         default => 'gray',
                     })
                     ->label('Status Arsip'),
-                Tables\Columns\TextColumn::make('lokasi_arsip_fisik')
-                    ->label('Lokasi Fisik')
-                    ->toggleable(),
                 Tables\Columns\TextColumn::make('file_count')
                     ->label('Dokumen')
                     ->getStateUsing(fn($record) => count($record->bukti_file ?? []) . ' Files')
@@ -371,6 +370,49 @@ class Sp2dResource extends Resource
                     ->label('Filter Status'),
             ])
             ->actions([
+                Tables\Actions\Action::make('lihat_lokasi')
+                    ->label('Lokasi Arsip')
+                    ->icon('heroicon-m-map-pin')
+                    ->color('warning')
+                    ->modalHeading('Detail Lokasi Penyimpanan Arsip')
+                    ->modalWidth('lg')
+                    ->infolist([
+                        \Filament\Infolists\Components\Section::make('Informasi Utama')
+                            ->schema([
+                                \Filament\Infolists\Components\TextEntry::make('nomor_register')
+                                    ->label('No. Register')
+                                    ->weight('bold')
+                                    ->color('primary'),
+                                \Filament\Infolists\Components\TextEntry::make('kode_klasifikasi')
+                                    ->label('Klasifikasi')
+                                    ->badge()
+                                    ->color('info'),
+                            ])->columns(2),
+                        \Filament\Infolists\Components\Section::make('Posisi Penyimpanan')
+                            ->schema([
+                                \Filament\Infolists\Components\Grid::make(2)
+                                    ->schema([
+                                        \Filament\Infolists\Components\TextEntry::make('arsip_ruang')
+                                            ->label('Ruang')
+                                            ->default('-'),
+                                        \Filament\Infolists\Components\TextEntry::make('arsip_box')
+                                            ->label('Box')
+                                            ->default('-'),
+                                        \Filament\Infolists\Components\TextEntry::make('arsip_rak_type')
+                                            ->label('Rak / Roll o pact')
+                                            ->default('-'),
+                                        \Filament\Infolists\Components\TextEntry::make('arsip_filing_cabinet')
+                                            ->label('Filing Cabinet')
+                                            ->default('-'),
+                                        \Filament\Infolists\Components\TextEntry::make('arsip_sampul')
+                                            ->label('Sampul / Berkas')
+                                            ->columnSpanFull()
+                                            ->color('success')
+                                            ->weight('bold')
+                                            ->default('-'),
+                                    ])
+                            ])
+                    ]),
                 Tables\Actions\Action::make('verifikasi')
                     ->label('Verifikasi')
                     ->icon('heroicon-o-check-circle')

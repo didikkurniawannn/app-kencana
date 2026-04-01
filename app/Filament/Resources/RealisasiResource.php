@@ -17,6 +17,10 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Notifications\Notification;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\Section as InfolistSection;
+use Filament\Infolists\Components\Grid as InfolistGrid;
+use Filament\Infolists\Infolist;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Model;
@@ -620,12 +624,6 @@ class RealisasiResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nomor_register')
-                    ->label('No. Register')
-                    ->searchable()
-                    ->sortable()
-                    ->copyable()
-                    ->color('primary'),
                 Tables\Columns\TextColumn::make('tanggal_realisasi')
                     ->label('Tanggal')
                     ->sortable()
@@ -701,6 +699,49 @@ class RealisasiResource extends Resource
                     ]),
             ])
             ->actions([
+                Tables\Actions\Action::make('lihat_lokasi')
+                    ->label('Lokasi Arsip')
+                    ->icon('heroicon-m-map-pin')
+                    ->color('warning')
+                    ->modalHeading('Detail Lokasi Penyimpanan Arsip')
+                    ->modalWidth('lg')
+                    ->infolist([
+                        InfolistSection::make('Informasi Utama')
+                            ->schema([
+                                TextEntry::make('nomor_register')
+                                    ->label('No. Register')
+                                    ->weight('bold')
+                                    ->color('primary'),
+                                TextEntry::make('kode_klasifikasi')
+                                    ->label('Klasifikasi')
+                                    ->badge()
+                                    ->color('info'),
+                            ])->columns(2),
+                        InfolistSection::make('Posisi Penyimpanan')
+                            ->schema([
+                                InfolistGrid::make(2)
+                                    ->schema([
+                                        TextEntry::make('arsip_ruang')
+                                            ->label('Ruang')
+                                            ->default('-'),
+                                        TextEntry::make('arsip_box')
+                                            ->label('Box')
+                                            ->default('-'),
+                                        TextEntry::make('arsip_rak_type')
+                                            ->label('Rak / Roll o pact')
+                                            ->default('-'),
+                                        TextEntry::make('arsip_filing_cabinet')
+                                            ->label('Filing Cabinet')
+                                            ->default('-'),
+                                        TextEntry::make('arsip_sampul')
+                                            ->label('Sampul / Berkas')
+                                            ->columnSpanFull()
+                                            ->color('success')
+                                            ->weight('bold')
+                                            ->default('-'),
+                                    ])
+                            ])
+                    ]),
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make()
                     ->visible(fn($record) => in_array($record->status, ['draft', 'dikembalikan'])),
