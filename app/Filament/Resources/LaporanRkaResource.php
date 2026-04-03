@@ -17,6 +17,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class LaporanRkaResource extends Resource
 {
+    public static function canAccess(): bool
+    {
+        return auth()->check();
+    }
+
     protected static ?string $model = DetailBelanja::class;
     protected static ?string $navigationIcon = 'heroicon-o-document-chart-bar';
     protected static ?string $navigationGroup = 'Laporan';
@@ -25,7 +30,10 @@ class LaporanRkaResource extends Resource
     protected static ?int $navigationSort = 4;
     protected static ?string $tenantOwnershipRelationshipName = 'instansi';
 
-    public static function canCreate(): bool { return false; }
+    public static function canCreate(): bool
+    {
+        return false;
+    }
 
     public static function getEloquentQuery(): Builder
     {
@@ -44,7 +52,7 @@ class LaporanRkaResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('full_path_names')
                     ->label('Program / Kegiatan / Sub / Rekening')
-                    ->getStateUsing(function($record) {
+                    ->getStateUsing(function ($record) {
                         return $record->rekening?->subKegiatan?->kegiatan?->nama_kegiatan;
                     })
                     ->description(fn($record) => $record->rekening?->nama_rekening)
@@ -66,7 +74,7 @@ class LaporanRkaResource extends Resource
                     ->summarize(Tables\Columns\Summarizers\Sum::make()->money('IDR')->label('Total Perubahan')),
                 Tables\Columns\TextColumn::make('selisih')
                     ->label('Selisih (+/-)')
-                    ->getStateUsing(fn($record) => (float)$record->pagu - (float)($record->pagu_murni ?? $record->pagu))
+                    ->getStateUsing(fn($record) => (float) $record->pagu - (float) ($record->pagu_murni ?? $record->pagu))
                     ->money('IDR')
                     ->badge()
                     ->color(fn($state) => $state > 0 ? 'success' : ($state < 0 ? 'danger' : 'gray')),

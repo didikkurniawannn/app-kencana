@@ -78,12 +78,14 @@
                 <div class="gemini-msg-row assistant">
                     <div class="gemini-msg-content">
                         <div class="gemini-ai-avatar thinking">
-                            <x-heroicon-o-sparkles class="w-4 h-4" />
+                            <svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
                         </div>
                         <div class="gemini-ai-body">
-                            <div class="gemini-thinking">
-                                <div class="gemini-thinking-shimmer"></div>
-                                <span>Menganalisis data keuangan...</span>
+                            <div class="gemini-thinking-simple">
+                                <span>Kencana AI sedang memproses...</span>
                             </div>
                         </div>
                     </div>
@@ -174,10 +176,16 @@
                         type="submit" 
                         class="gemini-send-btn"
                         wire:loading.attr="disabled"
-                        wire:target="askAi"
-                        {{ $cooldownSeconds > 0 ? 'disabled' : '' }}
+                        {{ $isAnalyzing || $cooldownSeconds > 0 ? 'disabled' : '' }}
                     >
-                        <x-heroicon-o-arrow-up class="w-5 h-5" />
+                        @if(!$isAnalyzing)
+                            <x-heroicon-o-arrow-up class="w-5 h-5" />
+                        @else
+                            <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        @endif
                     </button>
                 </form>
 
@@ -554,30 +562,26 @@
         .dark .gemini-action-btn:hover { background: #2d2e30; color: #e3e3e3; }
 
         /* Thinking */
-        .gemini-thinking {
+        .gemini-thinking-simple {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 4px 0;
+            padding: 8px 0;
             font-size: 14px;
             color: #70757a;
-            position: relative;
-            overflow: hidden;
+            font-style: italic;
         }
-        .dark .gemini-thinking { color: #9aa0a6; }
-        
-        .gemini-thinking-shimmer {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100px;
-            background: linear-gradient(90deg, transparent, rgba(66,133,244,0.12), transparent);
-            animation: shimmer 2s infinite;
+        .dark .gemini-thinking-simple { 
+            color: #9aa0a6; 
         }
+
         @keyframes shimmer {
-            0% { transform: translateX(-100px); }
-            100% { transform: translateX(600px); }
+            0% { transform: translateX(-200px); }
+            100% { transform: translateX(800px); }
+        }
+        
+        .gemini-thinking-text {
+            font-weight: 500;
+            letter-spacing: 0.2px;
         }
 
         /* ===== BOTTOM INPUT ===== */

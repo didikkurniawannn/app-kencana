@@ -25,6 +25,11 @@ use App\Helpers\ActiveYear;
 
 class LaporanBpkResource extends Resource
 {
+    public static function canAccess(): bool
+    {
+        return auth()->check();
+    }
+
     protected static ?string $model = Realisasi::class;
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
     protected static ?string $navigationGroup = 'Laporan';

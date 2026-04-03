@@ -154,6 +154,6 @@ class AnalisisAi extends Page
 
     public static function canAccess(): bool
     {
-        return auth()->user()?->hasAnyRole(['super_admin', 'admin_instansi', 'verifikator', 'pimpinan']) ?? false;
+        return auth()->check();
     }
 }
