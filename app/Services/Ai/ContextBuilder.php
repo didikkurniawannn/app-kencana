@@ -6,6 +6,7 @@ use App\Models\Program;
 use App\Models\Realisasi;
 use App\Models\Sp2d;
 use App\Models\SubKegiatan;
+use App\Models\ExpenseType;
 use App\Helpers\ActiveYear;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +26,7 @@ class ContextBuilder
             return ['error' => 'No instansi context found.'];
         }
 
-        $cacheKey = "ai_snapshot_v2_{$tenant->id}_{$activeYear}";
+        $cacheKey = "ai_snapshot_v3_{$tenant->id}_{$activeYear}";
 
         return Cache::remember($cacheKey, now()->addMinutes(15), function () use ($tenant, $activeYear) {
             // 1. Metadata Instansi
@@ -83,46 +84,87 @@ class ContextBuilder
                 }
             }
 
-            // 4. Analisis Hirarki Rendah: Item RKA Strategis (Pagu > 10jt)
-            $snapshot['rincian_belanja_utama'] = \App\Models\DetailBelanja::where('instansi_id', $tenant->id)
-                ->where('pagu', '>', 10000000)
+            // 4. SELURUH Rincian Belanja (tanpa filter pagu minimum)
+            $allBelanja = \App\Models\DetailBelanja::where('instansi_id', $tenant->id)
                 ->whereHas('rekening.subKegiatan.kegiatan.program', fn($q) => $q->where('tahun_anggaran', $activeYear))
+                ->with(['rekening.subKegiatan'])
                 ->orderByDesc('pagu')
-                ->take(25)
-                ->get()
-                ->map(fn($d) => [
-                    'item' => $d->nama_detail_belanja,
-                    'pagu' => $d->pagu,
-                    'real' => $d->realisasi_total,
-                    'sisa' => $d->sisa_pagu,
-                    'keg' => $d->rekening?->subKegiatan?->nama_sub_kegiatan
-                ])->values()->toArray();
+                ->get();
 
-            // 5. Agregasi per Kode Rekening (Buku Besar)
+            $snapshot['seluruh_belanja'] = $allBelanja->map(fn($d) => [
+                'item' => $d->nama_detail_belanja,
+                'pagu' => $d->pagu,
+                'real' => $d->realisasi_total ?? 0,
+                'sisa' => $d->sisa_pagu ?? $d->pagu,
+                'rek_kode' => $d->rekening?->kode_rekening,
+                'rek_nama' => $d->rekening?->nama_rekening,
+                'sub_keg' => $d->rekening?->subKegiatan?->nama_sub_kegiatan,
+            ])->values()->toArray();
+
+            // 5. Ringkasan per Sub Kegiatan
+            $snapshot['ringkasan_sub_kegiatan'] = $allBelanja->groupBy(fn($d) => $d->rekening?->subKegiatan?->nama_sub_kegiatan ?? 'Tidak Diketahui')
+                ->map(fn($items, $name) => [
+                    'sub_kegiatan' => $name,
+                    'total_pagu' => $items->sum('pagu'),
+                    'total_realisasi' => $items->sum('realisasi_total'),
+                    'jumlah_item' => $items->count(),
+                ])->sortByDesc('total_pagu')->values()->toArray();
+
+            // 6. Ringkasan per Jenis Belanja (Expense Type) — dari data realisasi
+            $snapshot['ringkasan_jenis_belanja'] = Realisasi::where('instansi_id', $tenant->id)
+                ->where('status', 'disetujui')
+                ->whereHas('detailBelanja.rekening.subKegiatan.kegiatan.program', fn($q) => $q->where('tahun_anggaran', $activeYear))
+                ->with('expenseType')
+                ->get()
+                ->groupBy(fn($r) => $r->expenseType?->name ?? 'Belum Dikategorikan')
+                ->map(fn($items, $name) => [
+                    'jenis' => $name,
+                    'total_realisasi' => $items->sum('jumlah'),
+                    'jumlah_transaksi' => $items->count(),
+                ])->sortByDesc('total_realisasi')->values()->toArray();
+
+            // 7. Agregasi per Kode Rekening (Buku Besar)
             $snapshot['distribusi_rekening'] = DB::table('rekenings')
                 ->join('detail_belanjas', 'rekenings.id', '=', 'detail_belanjas.rekening_id')
-                ->join('realisasis', 'detail_belanjas.id', '=', 'realisasis.detail_belanja_id')
+                ->leftJoin('realisasis', function ($join) {
+                    $join->on('detail_belanjas.id', '=', 'realisasis.detail_belanja_id')
+                        ->where('realisasis.status', 'disetujui');
+                })
                 ->where('rekenings.instansi_id', $tenant->id)
-                ->where('realisasis.status', 'disetujui')
-                ->whereYear('realisasis.tanggal_realisasi', $activeYear)
-                ->select('rekenings.kode_rekening', 'rekenings.nama_rekening', DB::raw('SUM(realisasis.jumlah) as total'))
+                ->whereExists(function ($query) use ($activeYear) {
+                    $query->select(DB::raw(1))
+                        ->from('sub_kegiatans')
+                        ->join('kegiatans', 'sub_kegiatans.kegiatan_id', '=', 'kegiatans.id')
+                        ->join('programs', 'kegiatans.program_id', '=', 'programs.id')
+                        ->whereColumn('rekenings.sub_kegiatan_id', 'sub_kegiatans.id')
+                        ->where('programs.tahun_anggaran', $activeYear);
+                })
+                ->select(
+                    'rekenings.kode_rekening',
+                    'rekenings.nama_rekening',
+                    DB::raw('SUM(detail_belanjas.pagu) as total_pagu'),
+                    DB::raw('COALESCE(SUM(realisasis.jumlah), 0) as total_realisasi')
+                )
                 ->groupBy('rekenings.kode_rekening', 'rekenings.nama_rekening')
-                ->orderByDesc('total')
-                ->take(15)
+                ->orderByDesc('total_pagu')
                 ->get()
-                ->mapWithKeys(fn($item) => [$item->kode_rekening . ' (' . $item->nama_rekening . ')' => (float) $item->total])
+                ->map(fn($item) => [
+                    'kode' => $item->kode_rekening,
+                    'nama' => $item->nama_rekening,
+                    'pagu' => (float) $item->total_pagu,
+                    'realisasi' => (float) $item->total_realisasi,
+                ])
                 ->toArray();
 
-            // 6. Status Kas (SP2D)
+            // 8. Status Kas (SP2D)
             $kasMasuk = (float) Sp2d::where('instansi_id', $tenant->id)->where('status_verifikasi', 'diverifikasi')->sum('jumlah_sp2d');
             $kasSisa = (float) Sp2d::where('instansi_id', $tenant->id)->where('status_verifikasi', 'diverifikasi')->sum('sisa_jumlah');
-            
+
             $snapshot['kas'] = [
                 'total_sp2d' => $kasMasuk,
                 'sisa_kas' => $kasSisa,
                 'terpakai' => $kasMasuk - $kasSisa,
             ];
-
 
             return $snapshot;
         });
@@ -136,7 +178,9 @@ class ContextBuilder
         $tenant = Filament::getTenant();
         $activeYear = ActiveYear::get();
         if ($tenant) {
+            // Clear all versions of the cache
             Cache::forget("ai_snapshot_v2_{$tenant->id}_{$activeYear}");
+            Cache::forget("ai_snapshot_v3_{$tenant->id}_{$activeYear}");
         }
     }
 }

@@ -177,13 +177,24 @@ class GeminiService
         
         Anda memiliki akses ke snapshot data keuangan terpadu berikut: " . json_encode($context) . "
         
+        PANDUAN DATA PENTING:
+        - 'seluruh_belanja': Berisi SEMUA item rincian belanja instansi (termasuk item kecil seperti ATK, pemeliharaan, sewa, dll). Gunakan data ini untuk menjawab pertanyaan spesifik. Lakukan pencarian keyword pada field 'item', 'rek_nama', 'sub_keg', dan 'jenis' untuk menemukan item yang relevan.
+        - 'ringkasan_sub_kegiatan': Agregasi total pagu & realisasi per sub kegiatan. Gunakan untuk analisis level kegiatan.
+        - 'ringkasan_jenis_belanja': Agregasi per jenis pengeluaran (Pemeliharaan, Perjalanan Dinas, Belanja Pegawai, dll). Gunakan untuk analisis komposisi belanja.
+        - 'distribusi_rekening': Agregasi per kode rekening anggaran dengan pagu dan realisasi.
+        - 'daftar_program': Daftar semua program dengan pagu dan realisasi.
+        - 'tren_bulanan': Tren realisasi per bulan.
+        - 'kas': Status kas SP2D (uang masuk vs terpakai vs sisa).
+        
         Panduan Analisis Strategis:
         1. Gunakan Bahasa Indonesia yang sangat profesional, objektif, dan berwibawa namun tetap membantu.
-        2. Analisis Data: Jangan hanya membaca angka. Gunakan data 'distribusi_rekening' untuk melihat pola pengeluaran, 'daftar_program' untuk melihat capaian unit kerja, dan 'rincian_belanja_utama' untuk menganalisis rencana strategis.
-        3. Deteksi Anomali: Jika Anda melihat sisa anggaran yang besar di akhir tahun atau penyerapan yang tidak wajar pada kode rekening tertentu, sampaikan sebagai peringatan (Warning).
-        4. Rekomendasi: Berikan saran pergeseran anggaran atau percepatan kegiatan jika diperlukan.
-        5. Visualisasi: Gunakan Markdown (tabel, list bold) untuk membuat data kompleks menjadi sangat mudah dibaca.
-        6. Akurasi: Selalu sebutkan Kode Rekening atau Nama Program yang spesifik saat memberikan analisis agar data Anda dapat ditelusuri (Traceable).";
+        2. PENCARIAN DATA: Ketika pengguna bertanya tentang item spesifik (misal: 'pemeliharaan komputer', 'ATK', 'kendaraan'), SELALU cari di data 'seluruh_belanja' berdasarkan kata kunci. Jika tidak ditemukan, katakan dengan jelas bahwa item tersebut tidak ditemukan dalam data anggaran.
+        3. ANALISIS MENDALAM: Gunakan 'ringkasan_jenis_belanja' dan 'ringkasan_sub_kegiatan' untuk memberikan analisis komparatif dan konteks yang lebih luas.
+        4. Deteksi Anomali: Jika Anda melihat sisa anggaran yang besar di akhir tahun atau penyerapan yang tidak wajar pada kode rekening tertentu, sampaikan sebagai peringatan (Warning).
+        5. Rekomendasi: Berikan saran pergeseran anggaran atau percepatan kegiatan jika diperlukan.
+        6. Visualisasi: Gunakan Markdown (tabel, list bold) untuk membuat data kompleks menjadi sangat mudah dibaca.
+        7. Akurasi: Selalu sebutkan Kode Rekening atau Nama Program yang spesifik saat memberikan analisis agar data Anda dapat ditelusuri (Traceable).
+        8. KELENGKAPAN: Jika diminta tentang suatu kategori (misal 'pemeliharaan'), tampilkan SEMUA item terkait yang Anda temukan, bukan hanya ringkasan.";
 
         $requestBody = [
             'contents' => [
@@ -196,7 +207,7 @@ class GeminiService
             ],
             'generationConfig' => [
                 'temperature' => 0.4,
-                'maxOutputTokens' => 2048,
+                'maxOutputTokens' => 4096,
             ]
         ];
 
