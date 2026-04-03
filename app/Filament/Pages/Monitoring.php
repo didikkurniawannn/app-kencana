@@ -21,7 +21,7 @@ class Monitoring extends Page
 {
     public static function canAccess(): bool
     {
-        return auth()->user()->can('page_Monitoring');
+        return auth()->check();
     }
     protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
     protected static ?string $navigationLabel = 'Monitoring';

@@ -16,7 +16,7 @@ class MonitoringRekening extends Page implements HasTable
 {
     public static function canAccess(): bool
     {
-        return auth()->user()->can('view_any_program');
+        return auth()->check();
     }
     use InteractsWithTable;
 
