@@ -107,6 +107,7 @@ class ListLaporanBpks extends ListRecords
                 ->label('Import Excel')
                 ->icon('heroicon-o-arrow-up-tray')
                 ->color('success')
+                ->visible(fn () => auth()->user()->hasAnyRole(['operator', 'super_admin']))
                 ->form([
                     \Filament\Forms\Components\Select::make('expense_type_id')
                         ->label('Jenis Pengadaan')
@@ -175,6 +176,7 @@ class ListLaporanBpks extends ListRecords
                 ->label('Download Template')
                 ->icon('heroicon-o-document-arrow-down')
                 ->color('gray')
+                ->visible(fn () => auth()->user()->hasAnyRole(['operator', 'super_admin']))
                 ->form([
                     \Filament\Forms\Components\Select::make('expense_type_id')
                         ->label('Jenis Pengadaan')
