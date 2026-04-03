@@ -7,6 +7,7 @@ use Filament\Forms\Form;
 use Filament\Pages\Auth\Login as BaseLogin;
 use Illuminate\Validation\ValidationException;
 use Closure;
+use App\Models\Activity;
 
 class CustomLogin extends BaseLogin
 {
@@ -53,5 +54,13 @@ class CustomLogin extends BaseLogin
                     ])
                     ->helperText('Autentikasi keamanan untuk memastikan Anda manusia (Anti-DDoS).'),
             ]);
+    }
+
+    /**
+     * Override authenticate to ensure standard Login event is fired and captured by listeners.
+     */
+    public function authenticate(): ?\Filament\Http\Responses\Auth\Contracts\LoginResponse
+    {
+        return parent::authenticate();
     }
 }
