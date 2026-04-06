@@ -45,6 +45,7 @@ class MandatoryProfileUpdate extends Component implements HasForms
                     ->required(),
                 TextInput::make('email')
                     ->label('Email')
+                    ->email()
                     ->required()
                     ->unique(User::class, 'email', fn ($record) => auth()->user()),
                 TextInput::make('phone_number')
