@@ -84,8 +84,7 @@ class MonitoringRekening extends Page implements HasTable
 
         return $table
             ->query(
-                \App\Models\Rekening::query()
-                    ->fromSub($baseQuery, 'v_table')
+                \Illuminate\Support\Facades\DB::table($baseQuery, 'v_table')
                     ->select(
                         \Illuminate\Support\Facades\DB::raw('MIN(original_id) as id'),
                         'v_kode as kode_rekening',

@@ -46,6 +46,13 @@ class RolesSeeder extends Seeder
                 'created_at' => '2026-03-30 11:43:45',
                 'updated_at' => '2026-03-30 11:43:45',
             ],
+            [
+                'id' => 12,
+                'name' => 'admin_instansi',
+                'guard_name' => 'web',
+                'created_at' => '2026-03-30 11:43:45',
+                'updated_at' => '2026-03-30 11:43:45',
+            ],
         ]);
     }
 }
