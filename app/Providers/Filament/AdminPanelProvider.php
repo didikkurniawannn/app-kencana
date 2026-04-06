@@ -108,7 +108,6 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-                \App\Http\Middleware\MustUpdateProfile::class,
             ])
             ->renderHook(
                 \Filament\View\PanelsRenderHook::GLOBAL_SEARCH_BEFORE,
@@ -590,7 +589,10 @@ class AdminPanelProvider extends PanelProvider
             )
             ->renderHook(
                 \Filament\View\PanelsRenderHook::BODY_END,
-                fn(): string => \Illuminate\Support\Facades\Blade::render('@livewire(\'realtime-notification-alert\')')
+                fn(): string => \Illuminate\Support\Facades\Blade::render('
+                    @livewire(\'mandatory-profile-update\')
+                    @livewire(\'realtime-notification-alert\')
+                ')
             );
     }
 }
