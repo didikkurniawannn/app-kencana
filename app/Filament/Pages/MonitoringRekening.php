@@ -40,16 +40,14 @@ class MonitoringRekening extends Page implements HasTable
         $baseQuery = \App\Models\Rekening::query()
             ->join('detail_belanjas', 'rekenings.id', '=', 'detail_belanjas.rekening_id')
             ->join('sub_kegiatans', 'rekenings.sub_kegiatan_id', '=', 'sub_kegiatans.id')
+            ->join('kegiatans', 'sub_kegiatans.kegiatan_id', '=', 'kegiatans.id')
+            ->join('programs', 'kegiatans.program_id', '=', 'programs.id')
             ->leftJoinSub($realisasiSubquery, 'realisasi_agg', 'detail_belanjas.id', '=', 'realisasi_agg.detail_belanja_id')
             ->when($tenantId, fn($q) => $q->where('rekenings.instansi_id', $tenantId))
-            ->whereHas('subKegiatan.kegiatan.program', function ($q) use ($activeYear, $tenantId) {
-                $q->where('tahun_anggaran', $activeYear);
-                if ($tenantId) {
-                    $q->where('programs.instansi_id', $tenantId);
-                }
-            })
+            ->where('programs.tahun_anggaran', $activeYear)
+            ->when($tenantId, fn($q) => $q->where('programs.instansi_id', $tenantId))
             ->select(
-                'rekenings.id as original_id',
+                'rekenings.id as id',
                 'rekenings.kode_rekening as raw_kode',
                 'rekenings.nama_rekening as raw_nama',
                 'rekenings.sub_kegiatan_id as raw_sub_kegiatan_id',
@@ -83,11 +81,11 @@ class MonitoringRekening extends Page implements HasTable
             );
 
         return $table
-            ->query(
-                \App\Models\Rekening::query()
+            ->query(function () use ($baseQuery) {
+                return \App\Models\Rekening::query()
                     ->fromSub($baseQuery, 'rekenings')
                     ->select(
-                        \Illuminate\Support\Facades\DB::raw('MIN(original_id) as id'),
+                        \Illuminate\Support\Facades\DB::raw('MIN(id) as id'),
                         'v_kode as kode_rekening',
                         'v_nama as nama_rekening',
                         \Illuminate\Support\Facades\DB::raw('SUM(pagu) as total_pagu_rupiah'),
@@ -95,8 +93,8 @@ class MonitoringRekening extends Page implements HasTable
                         \Illuminate\Support\Facades\DB::raw('SUM(riil_koef) as total_riil_kuefisien'),
                         \Illuminate\Support\Facades\DB::raw('SUM(riil_rupiah) as total_riil_rupiah')
                     )
-                    ->groupBy('v_kode', 'v_nama')
-            )
+                    ->groupBy('v_kode', 'v_nama');
+            })
             ->columns([
                 Tables\Columns\TextColumn::make('kode_rekening')
                     ->label('Kode Rekening')

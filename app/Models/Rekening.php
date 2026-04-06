@@ -50,7 +50,7 @@ class Rekening extends Model
 
     public function getTotalKuefisienRealisasiAttribute(): float
     {
-        return \App\Models\Realisasi::where('status', 'approved')
+        return \App\Models\Realisasi::where('status', 'disetujui')
             ->whereIn('detail_belanja_id', $this->detailBelanjas->pluck('id'))
             ->sum('kuefisien');
     }
