@@ -34,7 +34,7 @@ class GenerateInstansiUsers extends Command
 
             foreach ($roles as $role) {
                 $roleLabel = str_replace('_', ' ', $role);
-                $email = "{$cleanCode}.{$role}@kencana.id";
+                $email = "{$cleanCode}.{$role}";
                 $userName = $instansi->name . ' - ' . ucwords($roleLabel);
 
                 $user = User::updateOrCreate(

@@ -33,11 +33,10 @@ class UserResource extends Resource
                         ->maxLength(255)
                         ->label('Nama'),
                     Forms\Components\TextInput::make('email')
-                        ->email()
                         ->required()
                         ->unique(ignoreRecord: true)
                         ->maxLength(255)
-                        ->label('Email'),
+                        ->label('Username / Email'),
                     Forms\Components\TextInput::make('phone_number')
                         ->tel()
                         ->maxLength(255)
