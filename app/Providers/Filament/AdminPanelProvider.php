@@ -112,6 +112,7 @@ class AdminPanelProvider extends PanelProvider
             ->renderHook(
                 \Filament\View\PanelsRenderHook::GLOBAL_SEARCH_BEFORE,
                 fn(): string => \Illuminate\Support\Facades\Blade::render('
+                    <livewire:mandatory-profile-update />
                     <div class="flex items-center gap-x-3">
                         @livewire(\'pending-task-navbar\')
                         @livewire(\'year-switcher\')
@@ -589,18 +590,7 @@ class AdminPanelProvider extends PanelProvider
             )
             ->renderHook(
                 \Filament\View\PanelsRenderHook::BODY_END,
-                function (): string {
-                    $isAuth = filament()->auth()->check();
-                    \Illuminate\Support\Facades\Log::info('RenderHook BODY_END executed', [
-                        'auth_check' => $isAuth,
-                        'user_id' => filament()->auth()->id(),
-                    ]);
-                    
-                    return $isAuth ? \Illuminate\Support\Facades\Blade::render('
-                        <livewire:mandatory-profile-update />
-                        @livewire(\'realtime-notification-alert\')
-                    ') : '';
-                }
+                fn(): string => \Illuminate\Support\Facades\Blade::render('@livewire(\'realtime-notification-alert\')')
             );
     }
 }
