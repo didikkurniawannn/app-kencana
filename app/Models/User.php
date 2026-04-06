@@ -33,6 +33,11 @@ class User extends Authenticatable implements FilamentUser, HasTenants
 
     public function getTenants(Panel $panel): Collection
     {
+        // Jika user adalah admin_instansi, kancing hanya ke 1 instansi saja (mencegah multi tenant)
+        if ($this->hasRole('admin_instansi')) {
+            return $this->instansi->take(1);
+        }
+
         return $this->instansi;
     }
 
