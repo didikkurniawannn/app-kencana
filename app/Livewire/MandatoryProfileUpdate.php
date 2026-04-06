@@ -31,6 +31,7 @@ class MandatoryProfileUpdate extends Component implements HasForms
             $this->form->fill([
                 'name' => $user->name,
                 'email' => $user->email,
+                'phone_number' => $user->phone_number,
             ]);
         }
     }
@@ -43,9 +44,13 @@ class MandatoryProfileUpdate extends Component implements HasForms
                     ->label('Nama Lengkap')
                     ->required(),
                 TextInput::make('email')
-                    ->label('Username / Email')
+                    ->label('Email')
                     ->required()
                     ->unique(User::class, 'email', fn ($record) => auth()->user()),
+                TextInput::make('phone_number')
+                    ->label('Nomor Handphone')
+                    ->tel()
+                    ->required(),
                 TextInput::make('password')
                     ->label('Password Baru')
                     ->password()
@@ -64,6 +69,7 @@ class MandatoryProfileUpdate extends Component implements HasForms
         $user->update([
             'name' => $formData['name'],
             'email' => $formData['email'],
+            'phone_number' => $formData['phone_number'],
             'password' => Hash::make($formData['password']),
             'profile_updated_at' => now(),
         ]);

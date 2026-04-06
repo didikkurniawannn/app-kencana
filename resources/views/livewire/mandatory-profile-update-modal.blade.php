@@ -9,7 +9,7 @@
                 </div>
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Autentikasi Diperlukan</h2>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    Karena ini adalah login pertama Anda (atau Anda menggunakan akun default), silakan perbarui <strong>Nama</strong>, <strong>Username</strong>, dan ganti <strong>Password</strong> default Anda untuk keamanan.
+                    Karena ini adalah login pertama Anda (atau Anda menggunakan akun default), silakan lengkapi <strong>Nama</strong>, <strong>Email</strong>, masukkan <strong>Nomor Handphone</strong>, dan ganti <strong>Password</strong> default Anda untuk keamanan.
                 </p>
             </div>
 
