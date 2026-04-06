@@ -589,10 +589,18 @@ class AdminPanelProvider extends PanelProvider
             )
             ->renderHook(
                 \Filament\View\PanelsRenderHook::BODY_END,
-                fn(): string => auth()->check() ? \Illuminate\Support\Facades\Blade::render('
-                    <livewire:mandatory-profile-update />
-                    @livewire(\'realtime-notification-alert\')
-                ') : ''
+                function (): string {
+                    $isAuth = filament()->auth()->check();
+                    \Illuminate\Support\Facades\Log::info('RenderHook BODY_END executed', [
+                        'auth_check' => $isAuth,
+                        'user_id' => filament()->auth()->id(),
+                    ]);
+                    
+                    return $isAuth ? \Illuminate\Support\Facades\Blade::render('
+                        <livewire:mandatory-profile-update />
+                        @livewire(\'realtime-notification-alert\')
+                    ') : '';
+                }
             );
     }
 }

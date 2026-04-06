@@ -20,7 +20,7 @@ class MandatoryProfileUpdate extends Component implements HasForms
 
     public function mount(): void
     {
-        $user = auth()->user();
+        $user = filament()->auth()->user();
         \Illuminate\Support\Facades\Log::info('Mounting MandatoryProfileUpdate', [
             'user_id' => $user->id ?? 'null',
             'profile_updated_at' => $user->profile_updated_at ?? 'null'
