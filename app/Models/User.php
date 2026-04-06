@@ -71,6 +71,7 @@ class User extends Authenticatable implements FilamentUser, HasTenants
         'email',
         'phone_number',
         'password',
+        'profile_updated_at',
     ];
 
     /**
@@ -91,5 +92,6 @@ class User extends Authenticatable implements FilamentUser, HasTenants
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'profile_updated_at' => 'datetime',
     ];
 }

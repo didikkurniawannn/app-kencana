@@ -16,4 +16,17 @@ class EditUser extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function afterSave(): void
+    {
+        $user = auth()->user();
+        $record = $this->getRecord();
+
+        // Jika user sedang mengedit profilnya sendiri, tandai sebagai sudah diupdate
+        if ($user && $record && $user->id === $record->id) {
+            $record->update([
+                'profile_updated_at' => now(),
+            ]);
+        }
+    }
 }

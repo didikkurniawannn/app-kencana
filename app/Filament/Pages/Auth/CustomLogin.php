@@ -57,6 +57,19 @@ class CustomLogin extends BaseLogin
     }
 
     /**
+     * Override email form component to use text instead of email type
+     */
+    protected function getEmailFormComponent(): \Filament\Forms\Components\Component
+    {
+        return TextInput::make('email')
+            ->label('Username / Email')
+            ->required()
+            ->autocomplete()
+            ->autofocus()
+            ->extraInputAttributes(['tabindex' => 1]);
+    }
+
+    /**
      * Override authenticate to ensure standard Login event is fired and captured by listeners.
      */
     public function authenticate(): ?\Filament\Http\Responses\Auth\Contracts\LoginResponse
