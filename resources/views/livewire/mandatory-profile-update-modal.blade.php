@@ -1,12 +1,13 @@
-<div>
+<div 
+    x-data="{ isOpen: @entangle('shouldShowModal') }"
+    x-init="if (isOpen) $dispatch('open-modal', { id: 'mandatory-profile-update' })"
+>
     <x-filament::modal
         id="mandatory-profile-update"
-        :visible="$shouldShowModal"
         :close-by-clicking-away="false"
         :close-button="false"
         :esc-to-close="false"
         width="lg"
-        display-classes="block"
         heading="Update Akun Pertama Kali"
         description="Silakan perbarui nama dan ganti password default Anda untuk keamanan."
     >
@@ -20,17 +21,4 @@
             </div>
         </form>
     </x-filament::modal>
-
-    {{-- Script untuk memastikan modal terbuka --}}
-    @if($shouldShowModal)
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            window.addEventListener('open-modal', event => {
-                if(event.detail.id === 'mandatory-profile-update') {
-                    // Modal already handled by :visible
-                }
-            });
-        });
-    </script>
-    @endif
 </div>

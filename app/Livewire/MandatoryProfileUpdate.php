@@ -21,6 +21,11 @@ class MandatoryProfileUpdate extends Component implements HasForms
     public function mount(): void
     {
         $user = auth()->user();
+        \Illuminate\Support\Facades\Log::info('Mounting MandatoryProfileUpdate', [
+            'user_id' => $user->id ?? 'null',
+            'profile_updated_at' => $user->profile_updated_at ?? 'null'
+        ]);
+
         if ($user && $user->profile_updated_at === null) {
             $this->shouldShowModal = true;
             $this->form->fill([

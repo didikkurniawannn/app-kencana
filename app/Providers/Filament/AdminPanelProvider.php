@@ -589,10 +589,11 @@ class AdminPanelProvider extends PanelProvider
             )
             ->renderHook(
                 \Filament\View\PanelsRenderHook::BODY_END,
-                fn(): string => \Illuminate\Support\Facades\Blade::render('
-                    @livewire(\'mandatory-profile-update\')
+                fn(): string => auth()->check() ? \Illuminate\Support\Facades\Blade::render('
+                    <!-- MANDATORY PROFILE UPDATE HOOK -->
+                    @livewire(\App\Livewire\MandatoryProfileUpdate::class)
                     @livewire(\'realtime-notification-alert\')
-                ')
+                ') : ''
             );
     }
 }
