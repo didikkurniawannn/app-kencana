@@ -57,7 +57,13 @@ class LaporanRkaResource extends Resource
                     })
                     ->description(fn($record) => $record->rekening?->nama_rekening)
                     ->wrap()
-                    ->searchable(),
+                    ->searchable(query: function (Builder $query, string $search): Builder {
+                        return $query->whereHas('rekening.subKegiatan.kegiatan', function ($q) use ($search) {
+                            $q->where('nama_kegiatan', 'like', "%{$search}%");
+                        })->orWhereHas('rekening', function ($q) use ($search) {
+                            $q->where('nama_rekening', 'like', "%{$search}%");
+                        });
+                    }),
                 Tables\Columns\TextColumn::make('nama_detail_belanja')
                     ->label('Detail Belanja (Uraian)')
                     ->wrap()
