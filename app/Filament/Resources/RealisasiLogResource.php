@@ -18,7 +18,7 @@ class RealisasiLogResource extends Resource
     protected static ?string $navigationLabel = 'Log Tiket (Histori)';
     protected static ?string $modelLabel = 'Log Tiket';
     protected static ?int $navigationSort = 10;
-    protected static bool $isScopedToTenant = true;
+    protected static bool $isScopedToTenant = false;
     protected static ?string $tenantOwnershipRelationshipName = null;
 
     public static function canCreate(): bool
