@@ -18,7 +18,8 @@ class RealisasiLogResource extends Resource
     protected static ?string $navigationLabel = 'Log Tiket (Histori)';
     protected static ?string $modelLabel = 'Log Tiket';
     protected static ?int $navigationSort = 10;
-    protected static ?string $tenantOwnershipRelationshipName = 'realisasi.instansi';
+    protected static bool $isScopedToTenant = true;
+    protected static ?string $tenantOwnershipRelationshipName = null;
 
     public static function canCreate(): bool
     {
@@ -27,7 +28,17 @@ class RealisasiLogResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
+        $activeYear = \App\Helpers\ActiveYear::get();
         return parent::getEloquentQuery()
+            ->whereHas('realisasi', function ($query) {
+                $tenant = \Filament\Facades\Filament::getTenant();
+                if ($tenant) {
+                    $query->where('instansi_id', $tenant->id);
+                }
+            })
+            ->whereHas('realisasi.detailBelanja.rekening.subKegiatan.kegiatan.program', function ($q) use ($activeYear) {
+                $q->where('tahun_anggaran', $activeYear);
+            })
             ->latest();
     }
 
