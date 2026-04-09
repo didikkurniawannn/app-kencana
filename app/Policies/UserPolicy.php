@@ -141,4 +141,17 @@ class UserPolicy
     {
         return $user->can('reorder_user');
     }
+
+    /**
+     * Determine whether the user can export.
+     */
+    public function export_user(User $user): bool
+    {
+        return $user->hasAnyRole(['super_admin', 'admin_instansi']);
+    }
+
+    public function export(User $user): bool
+    {
+        return $user->hasAnyRole(['super_admin', 'admin_instansi']);
+    }
 }

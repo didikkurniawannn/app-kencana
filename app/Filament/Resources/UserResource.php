@@ -112,6 +112,16 @@ class UserResource extends Resource
                     ->toggleable()
                     ->label('Dibuat'),
             ])
+            ->headerActions([
+                Tables\Actions\Action::make('export_user')
+                    ->label('Export Excel')
+                    ->icon('heroicon-o-arrow-down-tray')
+                    ->color('success')
+                    ->visible(fn () => auth()->user()?->can('export_user', User::class))
+                    ->action(function () {
+                        return \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\UsersExport, 'users-' . date('Y-m-d') . '.xlsx');
+                    }),
+            ])
             ->filters([])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -119,6 +129,12 @@ class UserResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\BulkAction::make('export_user_bulk')
+                        ->label('Export Excel')
+                        ->icon('heroicon-o-arrow-down-tray')
+                        ->color('success')
+                        ->visible(fn () => auth()->user()?->can('export_user', User::class))
+                        ->action(fn (\Illuminate\Support\Collection $records) => \Maatwebsite\Excel\Facades\Excel::download(new \App\Exports\UsersExport($records->pluck('id')->toArray()), 'users_selected_' . now()->format('YmdHis') . '.xlsx')),
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
@@ -140,6 +156,11 @@ class UserResource extends Resource
     }
 
     public static function canDelete(Model $record): bool
+    {
+        return auth()->user()?->hasAnyRole(['super_admin', 'admin_instansi']) ?? false;
+    }
+
+    public static function canDeleteAny(): bool
     {
         return auth()->user()?->hasAnyRole(['super_admin', 'admin_instansi']) ?? false;
     }
