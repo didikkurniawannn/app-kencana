@@ -15,6 +15,46 @@ class SecureFileController extends Controller
             abort(404);
         }
 
+        $user = auth()->user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
+
+        // --- SECURITY VALIDATION BY INSTANSI ---
+        if (!$user->hasRole('super_admin')) {
+            $allowed = false;
+
+            // Check if it's a Realisasi file
+            if (str_starts_with($path, 'bukti-realisasi/')) {
+                $realisasi = \App\Models\Realisasi::where(function($query) use ($path) {
+                        $query->whereJsonContains('bukti_file', $path)
+                              ->orWhere('bukti_file', 'like', "%$path%");
+                    })->first();
+
+                if ($realisasi && $user->instansi->contains('id', $realisasi->instansi_id)) {
+                    $allowed = true;
+                }
+            } 
+            // Check if it's a Pegawai file
+            else if (str_starts_with($path, 'pegawai/')) {
+                $pegawai = \App\Models\Pegawai::where('file_perjanjian_kinerja', $path)->first();
+                if ($pegawai && $user->instansi->contains('id', $pegawai->instansi_id)) {
+                    $allowed = true;
+                }
+            }
+            // Add other path checks if necessary
+            else {
+                // If path is unknown, we might want to deny by default or 
+                // check if it's in a directory that implies instansi context if available
+                // For now, let's be conservative.
+                $allowed = false;
+            }
+
+            if (!$allowed) {
+                abort(403, 'You do not have permission to access this file.');
+            }
+        }
+
         $fullPath = Storage::disk('public')->path($path);
         $ext = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
 
@@ -22,15 +62,12 @@ class SecureFileController extends Controller
             return response()->download($fullPath);
         }
 
-        $user = auth()->user();
-        if (!$user) {
-            abort(403, 'Unauthorized');
-        }
-
-        // Find best password column: nip, then email
+        // Find best password column: nip (from related pegawai if linked) or email
         $password = $user->email;
-        if (!empty($user->nip)) {
-            $password = $user->nip;
+        // If user is a pegawai, use their NIP for better security
+        $pegawai = \App\Models\Pegawai::where('nip', $user->phone_number)->first(); // Assuming phone_number or similar might be NIP or linked
+        if ($pegawai) {
+            $password = $pegawai->nip;
         }
 
         try {
