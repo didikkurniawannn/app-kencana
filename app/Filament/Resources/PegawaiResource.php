@@ -98,7 +98,7 @@ class PegawaiResource extends Resource
                 Tables\Columns\TextColumn::make('file_perjanjian_kinerja')
                     ->label('File PK')
                     ->formatStateUsing(fn ($state) => $state ? 'Lihat / Download' : 'Tidak Ada')
-                    ->url(fn ($record) => $record->file_perjanjian_kinerja ? \Illuminate\Support\Facades\Storage::disk('public')->url($record->file_perjanjian_kinerja) : null)
+                    ->url(fn ($record) => $record->file_perjanjian_kinerja ? route('secure.download', ['path' => $record->file_perjanjian_kinerja]) : null)
                     ->openUrlInNewTab()
                     ->badge()
                     ->color(fn ($state) => $state ? 'success' : 'gray')

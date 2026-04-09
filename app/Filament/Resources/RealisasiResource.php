@@ -953,6 +953,7 @@ class RealisasiResource extends Resource
                                             $fullPath = Storage::disk('public')->path($file);
                                             $ext = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
 
+                                            // CASE 1: PDF (Password Protect)
                                             if ($ext === 'pdf') {
                                                 try {
                                                     $pdf = new \setasign\Fpdi\Tcpdf\Fpdi();
@@ -969,8 +970,32 @@ class RealisasiResource extends Resource
                                                 } catch (\Exception $e) {
                                                     $zip->addFile($fullPath, $file);
                                                 }
-                                            } else {
+                                            } 
+                                            // CASE 2: IMAGES (Convert to PDF then Protect)
+                                            else if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'])) {
+                                                try {
+                                                    $pdf = new \setasign\Fpdi\Tcpdf\Fpdi();
+                                                    $ownerPass = bin2hex(random_bytes(8));
+                                                    $pdf->SetProtection(['print', 'copy'], $password, $ownerPass, 0, null);
+                                                    $pdf->AddPage();
+                                                    $pageWidth = $pdf->getPageWidth() - 20;
+                                                    $imgSize = getimagesize($fullPath);
+                                                    if ($imgSize) {
+                                                        $pdf->Image($fullPath, 10, 10, $pageWidth, 0, '', '', '', true, 300, '', false, false, 0, 'L');
+                                                    }
+                                                    $newFile = pathinfo($file, PATHINFO_DIRNAME) . '/' . pathinfo($file, PATHINFO_FILENAME) . '.pdf';
+                                                    $zip->addFromString($newFile, $pdf->Output('', 'S'));
+                                                } catch (\Exception $e) {
+                                                    $zip->addFile($fullPath, $file);
+                                                }
+                                            }
+                                            // CASE 3: OTHERS
+                                            else {
                                                 $zip->addFile($fullPath, $file);
+                                                // Optional: Set password for the specific file in zip if supported
+                                                if (method_exists($zip, 'setEncryptionName')) {
+                                                    $zip->setEncryptionName($file, \ZipArchive::EM_AES_256, $password);
+                                                }
                                             }
                                         }
                                     }
@@ -1036,7 +1061,7 @@ class RealisasiResource extends Resource
                                 if (!$record->bukti_file)
                                     return '-';
                                 return collect($record->bukti_file)->map(function ($file) {
-                                    $url = Storage::disk('public')->url($file);
+                                    $url = route('secure.download', ['path' => $file]);
                                     $name = basename($file);
                                     return "<a href='{$url}' target='_blank' style='color: #10b981; text-decoration: underline;'>{$name}</a>";
                                 })->join('<br>');

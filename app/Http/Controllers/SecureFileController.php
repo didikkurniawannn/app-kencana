@@ -42,57 +42,108 @@ class SecureFileController extends Controller
                     $allowed = true;
                 }
             }
-            // Add other path checks if necessary
             else {
-                // If path is unknown, we might want to deny by default or 
-                // check if it's in a directory that implies instansi context if available
-                // For now, let's be conservative.
                 $allowed = false;
             }
 
             if (!$allowed) {
-                abort(403, 'You do not have permission to access this file.');
+                abort(403, 'Anda tidak memiliki otoritas untuk mengakses berkas ini.');
             }
         }
 
         $fullPath = Storage::disk('public')->path($path);
         $ext = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
 
-        if ($ext !== 'pdf') {
-            return response()->download($fullPath);
-        }
-
-        // Find best password column: nip (from related pegawai if linked) or email
+        // Find best password: nip (from related pegawai) or email
         $password = $user->email;
-        // If user is a pegawai, use their NIP for better security
-        $pegawai = \App\Models\Pegawai::where('nip', $user->phone_number)->first(); // Assuming phone_number or similar might be NIP or linked
+        $pegawai = \App\Models\Pegawai::where('nip', $user->phone_number)->first();
         if ($pegawai) {
             $password = $pegawai->nip;
         }
 
-        try {
-            $pdf = new Fpdi();
-            $pageCount = $pdf->setSourceFile($fullPath);
+        // --- CASE 1: PDF (Direct Encryption) ---
+        if ($ext === 'pdf') {
+            try {
+                $pdf = new Fpdi();
+                $pageCount = $pdf->setSourceFile($fullPath);
+                $ownerPass = bin2hex(random_bytes(8));
+                $pdf->SetProtection(['print', 'copy'], $password, $ownerPass, 0, null);
 
-            $ownerPass = bin2hex(random_bytes(8));
-            $pdf->SetProtection(['print', 'copy'], $password, $ownerPass, 0, null);
+                for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
+                    $templateId = $pdf->importPage($pageNo);
+                    $size = $pdf->getTemplateSize($templateId);
+                    $pdf->AddPage($size['orientation'], [$size['width'], $size['height']]);
+                    $pdf->useTemplate($templateId);
+                }
 
-            for ($pageNo = 1; $pageNo <= $pageCount; $pageNo++) {
-                $templateId = $pdf->importPage($pageNo);
-                $size = $pdf->getTemplateSize($templateId);
-                $pdf->AddPage($size['orientation'], [$size['width'], $size['height']]);
-                $pdf->useTemplate($templateId);
+                $pdfContent = $pdf->Output('protected.pdf', 'S');
+                return response($pdfContent, 200, [
+                    'Content-Type' => 'application/pdf',
+                    'Content-Disposition' => 'attachment; filename="' . basename($fullPath) . '"'
+                ]);
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error('PDF Encryption Failed: ' . $e->getMessage());
+                return response()->download($fullPath);
             }
-
-            $pdfContent = $pdf->Output('protected.pdf', 'S');
-
-            return response($pdfContent, 200, [
-                'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'attachment; filename="' . basename($fullPath) . '"'
-            ]);
-        } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('PDF Encryption Failed: ' . $e->getMessage());
-            return response()->download($fullPath);
         }
+
+        // --- CASE 2: IMAGES (Convert to PDF then Encrypt) ---
+        if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'])) {
+            try {
+                $pdf = new Fpdi();
+                $ownerPass = bin2hex(random_bytes(8));
+                $pdf->SetProtection(['print', 'copy'], $password, $ownerPass, 0, null);
+                
+                $pdf->AddPage();
+                // Get page dimensions to fit image
+                $pageWidth = $pdf->getPageWidth() - 20;
+                $pageHeight = $pdf->getPageHeight() - 20;
+                
+                $imgSize = getimagesize($fullPath);
+                if ($imgSize) {
+                    $pdf->Image($fullPath, 10, 10, $pageWidth, 0, '', '', '', true, 300, '', false, false, 0, 'L');
+                }
+
+                $pdfContent = $pdf->Output('protected_image.pdf', 'S');
+                $filename = pathinfo(basename($fullPath), PATHINFO_FILENAME) . '.pdf';
+
+                return response($pdfContent, 200, [
+                    'Content-Type' => 'application/pdf',
+                    'Content-Disposition' => 'attachment; filename="' . $filename . '"'
+                ]);
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error('Image to PDF Conversion Failed: ' . $e->getMessage());
+                return response()->download($fullPath);
+            }
+        }
+
+        // --- CASE 3: OTHER DOCUMENTS (Wrap in Password-Protected ZIP) ---
+        // Note: PHP ZipArchive requires libzip >= 1.2.0 for password support
+        if (class_exists('ZipArchive')) {
+            try {
+                $tempPath = tempnam(sys_get_temp_dir(), 'secure_zip');
+                $zip = new \ZipArchive();
+                
+                if ($zip->open($tempPath, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === TRUE) {
+                    $zip->addFile($fullPath, basename($fullPath));
+                    
+                    // Set password protection
+                    if (method_exists($zip, 'setPassword')) {
+                        $zip->setPassword($password);
+                        $zip->setEncryptionName(basename($fullPath), \ZipArchive::EM_AES_256);
+                    }
+                    
+                    $zip->close();
+                    
+                    $filename = pathinfo(basename($fullPath), PATHINFO_FILENAME) . '.zip';
+                    return response()->download($tempPath, $filename)->deleteFileAfterSend(true);
+                }
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error('ZIP Encryption Failed: ' . $e->getMessage());
+            }
+        }
+
+        // Fallback for cases where encryption fails or libzip is too old
+        return response()->download($fullPath);
     }
 }
