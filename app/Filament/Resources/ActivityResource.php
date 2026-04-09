@@ -64,7 +64,7 @@ class ActivityResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()?->hasAnyRole(['super_admin', 'operator']) ?? false;
+        return auth()->user()?->hasAnyRole(['super_admin', 'admin_instansi']) ?? false;
     }
 
     public static function canCreate(): bool
