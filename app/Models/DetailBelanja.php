@@ -130,7 +130,18 @@ class DetailBelanja extends Model
         $program = $kegiatan?->program;
         $tahun = $program?->tahun_anggaran ?? 'Unknown Year';
 
-        $clean = fn($string) => str_replace(['/', '\\'], '-', $string);
+        $clean = function ($string) {
+            if (empty($string)) {
+                return '';
+            }
+            // Remove control characters (tabs, newlines, etc.) to prevent Flysystem path corruption errors
+            $string = preg_replace('/\p{C}/u', ' ', $string);
+            // Replace directory separators with a hyphen
+            $string = str_replace(['/', '\\'], '-', $string);
+            // Collapse multiple spaces into a single space
+            $string = preg_replace('/\s+/', ' ', $string);
+            return trim($string);
+        };
 
         $path = [
             'bukti-realisasi',
