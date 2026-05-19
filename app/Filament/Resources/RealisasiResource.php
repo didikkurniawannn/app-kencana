@@ -85,6 +85,14 @@ class RealisasiResource extends Resource
                         })
                         ->searchable()
                         ->reactive()
+                        ->afterStateHydrated(function (callable $set, $record) {
+                            if ($record && $record->detailBelanja) {
+                                $rekening = $record->detailBelanja->rekening;
+                                if ($rekening) {
+                                    $set('sub_kegiatan_id', $rekening->sub_kegiatan_id);
+                                }
+                            }
+                        })
                         ->afterStateUpdated(function (callable $set) {
                             $set('rekening_id', null);
                             $set('detail_belanja_id', null);
@@ -107,6 +115,11 @@ class RealisasiResource extends Resource
                         })
                         ->searchable()
                         ->reactive()
+                        ->afterStateHydrated(function (callable $set, $record) {
+                            if ($record && $record->detailBelanja) {
+                                $set('rekening_id', $record->detailBelanja->rekening_id);
+                            }
+                        })
                         ->afterStateUpdated(function (callable $set) {
                             $set('detail_belanja_id', null);
                             $set('sisa_pagu_display', '-');
@@ -115,13 +128,18 @@ class RealisasiResource extends Resource
 
                     Forms\Components\Select::make('detail_belanja_id')
                         ->label('Detail Belanja')
-                        ->options(function (callable $get) {
+                        ->options(function (callable $get, $record) {
                             $rekeningId = $get('rekening_id');
                             if (!$rekeningId)
                                 return [];
 
+                            $currentId = $record?->detail_belanja_id;
+
                             return DetailBelanja::where('rekening_id', $rekeningId)
-                                ->where('sisa_pagu', '>', 0)
+                                ->where(function ($query) use ($currentId) {
+                                    $query->where('sisa_pagu', '>', 0)
+                                          ->when($currentId, fn($q) => $q->orWhere('id', $currentId));
+                                })
                                 ->get()
                                 ->mapWithKeys(function ($item) {
                                     $sisaPagu = 'Rp ' . number_format($item->sisa_pagu, 0, ',', '.');
@@ -132,6 +150,19 @@ class RealisasiResource extends Resource
                         ->required(false)
                         ->searchable()
                         ->reactive()
+                        ->getOptionLabelUsing(fn ($value) => DetailBelanja::find($value)?->nama_detail_belanja)
+                        ->afterStateHydrated(function (callable $set, $state) {
+                            if ($state) {
+                                $detail = DetailBelanja::find($state);
+                                if ($detail) {
+                                    $set('harga_satuan', (float) $detail->harga);
+                                    $set('pagu_awal', 'Rp ' . number_format((float) $detail->pagu, 0, ',', '.'));
+                                    $set('sisa_pagu_display', 'Rp ' . number_format((float) $detail->sisa_pagu, 0, ',', '.'));
+                                    $set('kuefisien_awal', number_format((float) $detail->kuefisien, 2, ',', '.') . ' ' . $detail->satuan);
+                                    $set('sisa_kuefisien_display', number_format((float) $detail->sisa_kuefisien, 2, ',', '.') . ' ' . $detail->satuan);
+                                }
+                            }
+                        })
                         ->afterStateUpdated(function (callable $set, $state) {
                             if ($state) {
                                 $detail = DetailBelanja::find($state);
