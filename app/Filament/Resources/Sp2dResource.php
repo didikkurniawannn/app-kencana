@@ -291,7 +291,7 @@ class Sp2dResource extends Resource
                         default => 'gray',
                     })
                     ->label('Sumber'),
-                Tables\Columns\TextColumn::make('instansi.nama')
+                Tables\Columns\TextColumn::make('instansi.name')
                     ->label('Instansi')
                     ->searchable()
                     ->sortable()

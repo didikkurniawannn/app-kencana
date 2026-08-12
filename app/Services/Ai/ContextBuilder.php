@@ -31,7 +31,7 @@ class ContextBuilder
         return Cache::remember($cacheKey, now()->addMinutes(15), function () use ($tenant, $activeYear) {
             // 1. Metadata Instansi
             $snapshot = [
-                'instansi' => $tenant->nama_instansi,
+                'instansi' => $tenant->name ?? $tenant->nama_instansi,
                 'tahun' => $activeYear,
                 'current_time' => now()->format('d/m/Y H:i'),
             ];
